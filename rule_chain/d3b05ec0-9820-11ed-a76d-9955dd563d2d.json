@@ -1,0 +1,74 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "Decodifica dei messaggi Dali - LoRa"
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "d3ba49d0-9820-11ed-a76d-9955dd563d2d"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "d3b05ec0-9820-11ed-a76d-9955dd563d2d"
+    },
+    "name" : "LR DALI MSG",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 1,
+      "toIndex" : 0,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 1,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : null,
+        "layoutX" : 710,
+        "layoutY" : 152
+      },
+      "configuration" : {
+        "defaultTTL" : 0
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "d3ba22c0-9820-11ed-a76d-9955dd563d2d"
+      },
+      "name" : "save telemetry",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : null,
+        "layoutX" : 394,
+        "layoutY" : 160
+      },
+      "configuration" : {
+        "jsScript" : "//Funzione di decodifica di tutti i messaggi embedded del dispositivo\n//var DecGtw_msg_String=\"telemetryH2O=2021-02-22 18:30:00,1255,1,1,2489,dummy,-57;\";\n//var DecGtw_msg_String=\"telemetry=17:58:30,17.4,39.1,1,3296,0.8,210,0.0,0.0,-18.2,11,0036,14076;\";\n//var EVB1:1;\n//\"MSG\":\"telemetryH2O=2021-02-22 18:30:00,1255,1,1,2489,dummy,-57;\"\n// telemetry_ceng=2021-09-28 10:17:00,6254,3,0319B2A1,-85,-5,20,7D3E,-74,12,33,0,-80;\n// telemetryPL=2022-02-01 09:12:11,11,10,23,5,0,3500,,,,485,0,-69;\n\n//\"MSG\": \"TDAL:0x30;,10,0000,-65;\"\nvar msg;\nvar output_msg =msg;//output\n\nif (msg.MSG !== undefined){\n    var temp=msg.MSG.split(';');\n     msg.MSG=temp[0]+\";\";//Nel caso vi fosse il pacchetto LoRa filtriamo i dati GA ADD  ed Rssi\n\n    output_msg.MSG=msg.MSG;\n    var  DecGtw_msg_String=msg.MSG;\n    msg=DecGTWmsg(DecGtw_msg_String);\n}\n\nfunction DecGTWmsg(DecGtw_msg_String){\nvar local_output={};\nlocal_output.MSG=DecGtw_msg_String;\nlocal_output.ct=msg.ct;\n\nvar telemetry = new RegExp(\"telemetry=\");\nvar telemetryH2O = new RegExp(\"telemetryH2O=\");\nvar telemetryPL = new RegExp(\"telemetryPL=\");\nvar DATT = new RegExp(\"DATT:\");\nvar evb = new RegExp(\"EVB\");\nvar dali = new RegExp(\"TDAL:\");\n\nvar Telemetry_arr; //telemetry splitted\nswitch (true) {\n    case telemetry.test(DecGtw_msg_String):\n\t\t\t//console.log(\"telemetry\");\n\t\t\tDecGtw_msg_String = DecGtw_msg_String.replace(telemetry, \"\").substr(0, DecGtw_msg_String.length - 1);\n\t\t\tTelemetry_arr = DecGtw_msg_String.split(',');\n\t\t   // console.log(Telemetry);\n\t\t\t  // console.log(\"len1 \"+ testtel);\n\t\t   local_output.timestamp=Telemetry_arr[0]; local_output.temperature=Telemetry_arr[1];   local_output.humidity=Telemetry_arr[2]; \n       local_output.out_state=Telemetry_arr[3];\n\t\t   //local_output.Batt=Telemetry_arr[4];\n\t\t   local_output.Batt=Telemetry_arr[6];\n\t\t   local_output.mc=Telemetry_arr[7];\n       //local_output.current=Telemetry_arr[5];     local_output.power=Telemetry_arr[6];    local_output.ax=Telemetry_arr[7];\n       local_output.ay=Telemetry_arr[8];          local_output.az=Telemetry_arr[9];         \n      // local_output.sc_pci=Telemetry_arr[10];local_output.sc_ecl=Telemetry_arr[11]; local_output.sc_rssi=Telemetry_arr[12];\n        break;\n    case telemetryH2O.test(DecGtw_msg_String):\n            //console.log(\"telemetryH2O\");\n          DecGtw_msg_String = DecGtw_msg_String.replace(telemetryH2O, \"\").substr(0, DecGtw_msg_String.length - 1);\n           Telemetry_arr = DecGtw_msg_String.split(',');\n     // console.log(Telemetry);\n      //Timestamp,IT,DF,RM,IF,dummy,ECL;\n      local_output.timestamp=Telemetry_arr[0]; \n      local_output.ImpulsiTotali=Telemetry_arr[1];       \n      local_output.DirezioneFlusso=Telemetry_arr[2];  \n      local_output.RimozioneContatore=Telemetry_arr[3];\n      local_output.ImpulsiFlussoInAvanti=Telemetry_arr[4];        \n     // local_output.sc_ecl=Telemetry_arr[5];     \n    //  local_output.rssi=Telemetry_arr[6];\n        break;\n    case evb.test(DecGtw_msg_String):\n         //console.log(\"evb\");\n         DecGtw_msg_String = DecGtw_msg_String.substr(0, DecGtw_msg_String.length - 1);\n         Telemetry_arr = DecGtw_msg_String.split(':');\n\t\t\t if (Telemetry_arr[1]===\"1\") Telemetry_arr[1]=\" open\";\n\t\t\t if (Telemetry_arr[1]===\"0\") Telemetry_arr[1]=\" close\";\n         local_output.Cmd=Telemetry_arr[0]+Telemetry_arr[1];\n        break;\n    case telemetryPL.test(DecGtw_msg_String):\n\t\t\t//console.log(\"telemetry\");\n\t\t\tDecGtw_msg_String = DecGtw_msg_String.replace(telemetryPL, \"\").substr(0, DecGtw_msg_String.length - 1);\n\t\t\tTelemetry_arr = DecGtw_msg_String.split(',');\n\t\t   // console.log(Telemetry);\n\t\t\t  // console.log(\"len1 \"+ testtel);\n\t\t   local_output.timestamp=Telemetry_arr[0]; \n\t\t   local_output.num_azionamenti_PL=Telemetry_arr[1];  //numero di azionamenti del PL (cicli time2close, time close e time2open) \n\t\t   local_output.T2Oc=Telemetry_arr[2];                // time to open\n           local_output.T2Cc=Telemetry_arr[3];                // time to close\n\t\t   local_output.TCc=Telemetry_arr[4];                 // time close\n\t\t   local_output.PL_state=Telemetry_arr[5];            // byte in cui è possibile inserire la segnalazione di un problema/allarme del sistema PL  \n\t\t   local_output.Batt=Telemetry_arr[6];\n\t\t   //local_output.TAC=Telemetry_arr[7];               // dummy\n           //local_output.RE_RSRP=Telemetry_arr[8];           // dummy\n           //local_output.SNR=Telemetry_arr[9];               // dummy\n           local_output.sc_pci=Telemetry_arr[10];\n           local_output.sc_ecl=Telemetry_arr[11]; \n           local_output.sc_rssi=Telemetry_arr[12];\n        break;    \n    case DATT.test(DecGtw_msg_String):\n\t\t\t//console.log(\"telemetry\");\n\t\t\tDecGtw_msg_String = DecGtw_msg_String.replace(DATT, \"\").substr(0, DecGtw_msg_String.length - 1);\n\t\t\tTelemetry_arr = DecGtw_msg_String.split(',');\n\t\t   // console.log(Telemetry);\n\t\t\t  // console.log(\"len1 \"+ testtel);\n\t\t   //local_output.NodeAttributes=Telemetry_arr[0]; \n\t\t   local_output.model=Telemetry_arr[0];  //numero di azionamenti del PL (cicli time2close, time close e time2open) \n\t\t   local_output.fw=Telemetry_arr[1];                // time to open\n           local_output.hw=Telemetry_arr[2];                // time to close\n\t\t   local_output.eeprom=Telemetry_arr[3];                 // time close\n\t\t   local_output.PL_Calib=Telemetry_arr[4];            // byte in cui è possibile inserire la segnalazione di un problema/allarme del sistema PL  \n\t\t   local_output.Xc=Telemetry_arr[5];\n\t\t   local_output.Yc=Telemetry_arr[6];               // dummy\n           local_output.Zc=Telemetry_arr[7];           // dummy\n           local_output.Ao_axes=Telemetry_arr[8];               // dummy\n           local_output.AoMax=Telemetry_arr[9];\n           local_output.AoTh=Telemetry_arr[10]; \n           local_output.AoTh1=Telemetry_arr[11];\n           local_output.T2Oc_att=Telemetry_arr[12];\n           local_output.T2Cc_att=Telemetry_arr[13];\n           local_output.TCc_att=Telemetry_arr[14];\n           //attr=1;\n           var msgType=\"POST_ATTRIBUTES_REQUEST\";\n        break; \n    case dali.test(DecGtw_msg_String):\n         \n         DecGtw_msg_String = DecGtw_msg_String.substr(0, DecGtw_msg_String.length - 1);\n         Telemetry_arr = DecGtw_msg_String.split(':');\n         \n         if(parseInt(Telemetry_arr[1])==0) local_output.intensita=0;\n         if((parseInt(Telemetry_arr[1])>0)&(parseInt(Telemetry_arr[1])<=203)) local_output.intensita=25;\n         if((parseInt(Telemetry_arr[1])>203)&(parseInt(Telemetry_arr[1])<=228)) local_output.intensita=50;\n         if((parseInt(Telemetry_arr[1])>228)&(parseInt(Telemetry_arr[1])<=243)) local_output.intensita=75;\n         if((parseInt(Telemetry_arr[1])>243)&(parseInt(Telemetry_arr[1])<=254)) local_output.intensita=100;\n         \n         //local_output.intensita=parseInt(Telemetry_arr[1]); \n\n        break;\n\n        default:\n        }\n    \n    return local_output;\n}\nreturn {msg: msg, metadata: metadata, msgType: msgType};"
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "d3ba49d0-9820-11ed-a76d-9955dd563d2d"
+      },
+      "name" : "DecGTWmsg",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

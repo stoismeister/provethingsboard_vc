@@ -1,0 +1,30 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "assignedCustomers" : [ {
+      "customerId" : {
+        "entityType" : "CUSTOMER",
+        "id" : "1b9127b0-66a8-11ed-a76d-9955dd563d2d"
+      },
+      "title" : "Prova",
+      "public" : false
+    } ],
+    "configuration" : {
+      "description" : ""
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "53026c40-66a8-11ed-a76d-9955dd563d2d"
+    },
+    "image" : null,
+    "mobileHide" : false,
+    "mobileOrder" : 1,
+    "name" : "Claim",
+    "title" : "Claim"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

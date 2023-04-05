@@ -1,0 +1,104 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "lastConnectedGateway" : "6a28a640-6feb-11ed-a76d-9955dd563d2d"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "f6df0320-a3d7-11ed-a76d-9955dd563d2d"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "caa1a9e0-6ff0-11ed-a76d-9955dd563d2d"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "56926e10-6fee-11ed-a76d-9955dd563d2d"
+    },
+    "label" : "Qaudro Generale",
+    "name" : "4C75256C2290_0010",
+    "softwareId" : null,
+    "type" : "Electric Metering"
+  },
+  "credentials" : {
+    "credentialsId" : "LK5iccZjc0vBVhUPk3Y7",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "DEVICE",
+      "id" : "6a28a640-6feb-11ed-a76d-9955dd563d2d"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "56926e10-6fee-11ed-a76d-9955dd563d2d"
+    },
+    "type" : "Created",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1680678986380,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1680678986380,
+      "longValue" : 1680678986380,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1680678349935,
+      "longValue" : 1680678347920,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastConnectTime",
+      "lastUpdateTs" : 1680678338582,
+      "longValue" : 1680678338582,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastDisconnectTime",
+      "lastUpdateTs" : 1680678649942,
+      "longValue" : 1680678649942,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "n_phase",
+      "lastUpdateTs" : 1674150466917,
+      "longValue" : null,
+      "strValue" : "3"
+    } ]
+  }
+}

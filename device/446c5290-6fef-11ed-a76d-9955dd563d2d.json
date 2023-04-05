@@ -1,0 +1,112 @@
+{
+  "entityType" : "DEVICE",
+  "entity" : {
+    "additionalInfo" : {
+      "lastConnectedGateway" : "6a28a640-6feb-11ed-a76d-9955dd563d2d"
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "f6df0320-a3d7-11ed-a76d-9955dd563d2d"
+    },
+    "deviceData" : {
+      "configuration" : {
+        "type" : "DEFAULT"
+      },
+      "transportConfiguration" : {
+        "type" : "DEFAULT"
+      }
+    },
+    "deviceProfileId" : {
+      "entityType" : "DEVICE_PROFILE",
+      "id" : "a9de8380-6ffb-11ed-a76d-9955dd563d2d"
+    },
+    "externalId" : null,
+    "firmwareId" : null,
+    "id" : {
+      "entityType" : "DEVICE",
+      "id" : "446c5290-6fef-11ed-a76d-9955dd563d2d"
+    },
+    "label" : "Lampada 7",
+    "name" : "4C75256C2290_000B",
+    "softwareId" : null,
+    "type" : "Dali"
+  },
+  "credentials" : {
+    "credentialsId" : "oYo4JkIEqOSWlEY6xRBc",
+    "credentialsType" : "ACCESS_TOKEN",
+    "credentialsValue" : null
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "DEVICE",
+      "id" : "6a28a640-6feb-11ed-a76d-9955dd563d2d"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "446c5290-6fef-11ed-a76d-9955dd563d2d"
+    },
+    "type" : "Created",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ {
+      "booleanValue" : false,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "active",
+      "lastUpdateTs" : 1680594446380,
+      "longValue" : null,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "inactivityAlarmTime",
+      "lastUpdateTs" : 1680594446380,
+      "longValue" : 1680594446380,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastActivityTime",
+      "lastUpdateTs" : 1680593806940,
+      "longValue" : 1680593806525,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastConnectTime",
+      "lastUpdateTs" : 1680593795749,
+      "longValue" : 1680593795749,
+      "strValue" : null
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "lastDisconnectTime",
+      "lastUpdateTs" : 1680593806537,
+      "longValue" : 1680593806537,
+      "strValue" : null
+    } ],
+    "SHARED_SCOPE" : [ {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "latitude",
+      "lastUpdateTs" : 1669731996477,
+      "longValue" : null,
+      "strValue" : "40.67014118279773"
+    }, {
+      "booleanValue" : null,
+      "doubleValue" : null,
+      "jsonValue" : null,
+      "key" : "longitude",
+      "lastUpdateTs" : 1669732009192,
+      "longValue" : null,
+      "strValue" : "16.572334191960415"
+    } ]
+  }
+}

@@ -1,0 +1,75 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : null,
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "2fe8c510-a082-11ed-a76d-9955dd563d2d"
+    },
+    "name" : "RPC Timestamp sync",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 1,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : null,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 235,
+        "layoutY" : 317
+      },
+      "configuration" : {
+        "msgCount" : 0,
+        "periodInSeconds" : 3600,
+        "jsScript" : "var msg = { method: \"setValue\", params: {} };\nvar d = new Date();\n\nvar timeOffsetInHours  =((d.getTimezoneOffset()/60) * (-1))+1; //aggiunto il +1 perchè il server ha come timezone offset 0 rispetto a utc\n          \nvar datestring =  d.getFullYear() + \"-\" + (\"0\"+(d.getMonth()+1)).slice(-2) + \"-\" + (\"0\" + d.getDate()).slice(-2) + \" \" + (\"0\"+(d.getHours()+timeOffsetInHours)).slice(-2) + \":\" + (\"0\" + d.getMinutes()).slice(-2) + \":\" + (\"0\" + d.getSeconds()).slice(-2);//+ \";\";\nmsg.params=\"AT+RSTM=?;\"\n\nmsg.params= \"\\\"AT+RSTM=\"+ datestring +\",FFFF,10;\\\"\";\nvar metadata = { \n    expirationTime: new Date().getTime() + 60000,\n    oneway: true,\n    persistent: false\n};\nvar msgType = \"RPC_CALL_FROM_SERVER_TO_DEVICE\";\n\nreturn { msg: msg, metadata: metadata, msgType: msgType };",
+        "originatorId" : "6a28a640-6feb-11ed-a76d-9955dd563d2d",
+        "originatorType" : "DEVICE"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2ff15090-a082-11ed-a76d-9955dd563d2d"
+      },
+      "name" : "RPC",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.debug.TbMsgGeneratorNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 562,
+        "layoutY" : 319
+      },
+      "configuration" : {
+        "timeoutInSeconds" : 60
+      },
+      "createdTime" : 0,
+      "debugMode" : true,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "2ff177a0-a082-11ed-a76d-9955dd563d2d"
+      },
+      "name" : "Send To device",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.rpc.TbSendRPCRequestNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

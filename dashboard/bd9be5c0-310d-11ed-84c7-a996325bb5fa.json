@@ -1,0 +1,444 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "assignedCustomers" : null,
+    "configuration" : {
+      "description" : "",
+      "widgets" : {
+        "37754551-ab08-ba9f-38a1-217be0019d49" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "requestTimeout" : 5000,
+              "oneWayElseTwoWay" : true,
+              "buttonText" : "ON/OFF 3080",
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              },
+              "methodName" : "setValue",
+              "methodParams" : "###AT+OUT1=1-1000;"
+            },
+            "title" : "ON/OFF",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "3498274c-597c-2271-e455-bee51fee6320" ],
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "37754551-ab08-ba9f-38a1-217be0019d49"
+        },
+        "9e54ed28-26e4-4d0b-9ad0-2a29f2c1ba3e" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "requestTimeout" : 5000,
+              "oneWayElseTwoWay" : true,
+              "buttonText" : "LONG PRESS 10 Secondi 3080",
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              },
+              "methodName" : "setValue",
+              "methodParams" : "###AT+OUT1=1-10000;"
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "3498274c-597c-2271-e455-bee51fee6320" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "9e54ed28-26e4-4d0b-9ad0-2a29f2c1ba3e"
+        },
+        "c24383db-50c5-5f3d-45b9-f29e8776669b" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "requestTimeout" : 5000,
+              "oneWayElseTwoWay" : true,
+              "buttonText" : "ON/OFF AMD ",
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              },
+              "methodName" : "setValue",
+              "methodParams" : "###AT+OUT1=1-1000;"
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "88a83ad8-4e5e-7676-643c-809caf7cc9a7" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "c24383db-50c5-5f3d-45b9-f29e8776669b"
+        },
+        "668d6508-74dc-c17a-6a44-7a9e2731d856" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "requestTimeout" : 5000,
+              "oneWayElseTwoWay" : true,
+              "buttonText" : "LONG PRESS 10 Secondi AMD",
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              },
+              "methodName" : "setValue",
+              "methodParams" : "###AT+OUT1=1-10000;"
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "88a83ad8-4e5e-7676-643c-809caf7cc9a7" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "668d6508-74dc-c17a-6a44-7a9e2731d856"
+        },
+        "123e4744-bf66-da3a-df36-ca67c35c4a24" : {
+          "isSystemType" : true,
+          "bundleAlias" : "charts",
+          "typeAlias" : "basic_timeseries",
+          "type" : "timeseries",
+          "title" : "New widget",
+          "sizeX" : 8,
+          "sizeY" : 5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "90106a32-07a1-4cd7-800a-4cd5ad1cdbc8",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "pac",
+                "type" : "timeseries",
+                "label" : "pac",
+                "color" : "#2196f3",
+                "settings" : {
+                  "excludeFromStacking" : false,
+                  "hideDataByDefault" : false,
+                  "disableDataHiding" : false,
+                  "removeFromLegend" : false,
+                  "showLines" : true,
+                  "fillLines" : false,
+                  "showPoints" : false,
+                  "showPointShape" : "circle",
+                  "pointShapeFormatter" : "var size = radius * Math.sqrt(Math.PI) / 2;\nctx.moveTo(x - size, y - size);\nctx.lineTo(x + size, y + size);\nctx.moveTo(x - size, y + size);\nctx.lineTo(x + size, y - size);",
+                  "showPointsLineWidth" : 5,
+                  "showPointsRadius" : 3,
+                  "tooltipValueFormatter" : "",
+                  "showSeparateAxis" : false,
+                  "axisTitle" : "",
+                  "axisPosition" : "left",
+                  "axisTicksFormatter" : "",
+                  "thresholds" : [ {
+                    "thresholdValueSource" : "predefinedValue"
+                  } ],
+                  "comparisonSettings" : {
+                    "showValuesForComparison" : true,
+                    "comparisonValuesLabel" : "",
+                    "color" : ""
+                  }
+                },
+                "_hash" : 0.09671546177725276
+              } ]
+            } ],
+            "timewindow" : {
+              "hideInterval" : false,
+              "hideAggregation" : false,
+              "hideAggInterval" : false,
+              "selectedTab" : 0,
+              "realtime" : {
+                "timewindowMs" : 86400000,
+                "interval" : 300000
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "shadowSize" : 4,
+              "fontColor" : "#545454",
+              "fontSize" : 10,
+              "xaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "yaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "grid" : {
+                "color" : "#545454",
+                "tickColor" : "#DDDDDD",
+                "verticalLines" : true,
+                "horizontalLines" : true,
+                "outlineWidth" : 1
+              },
+              "stack" : false,
+              "tooltipIndividual" : false,
+              "timeForComparison" : "months",
+              "xaxisSecond" : {
+                "axisPosition" : "top",
+                "showLabels" : true
+              }
+            },
+            "title" : "Produzione Fotovoltaico",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : false,
+            "displayTimewindow" : true,
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "showLegend" : true,
+            "legendConfig" : {
+              "direction" : "column",
+              "position" : "bottom",
+              "sortDataKeys" : false,
+              "showMin" : false,
+              "showMax" : false,
+              "showAvg" : true,
+              "showTotal" : false
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "123e4744-bf66-da3a-df36-ca67c35c4a24"
+        }
+      },
+      "states" : {
+        "default" : {
+          "name" : "GESTIONE RIG",
+          "root" : true,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "37754551-ab08-ba9f-38a1-217be0019d49" : {
+                  "sizeX" : 6,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "9e54ed28-26e4-4d0b-9ad0-2a29f2c1ba3e" : {
+                  "sizeX" : 6,
+                  "sizeY" : 2,
+                  "row" : 2,
+                  "col" : 0
+                },
+                "c24383db-50c5-5f3d-45b9-f29e8776669b" : {
+                  "sizeX" : 6,
+                  "sizeY" : 2,
+                  "row" : 0,
+                  "col" : 8
+                },
+                "668d6508-74dc-c17a-6a44-7a9e2731d856" : {
+                  "sizeX" : 6,
+                  "sizeY" : 2,
+                  "row" : 2,
+                  "col" : 8
+                },
+                "123e4744-bf66-da3a-df36-ca67c35c4a24" : {
+                  "sizeX" : 23,
+                  "sizeY" : 9,
+                  "row" : 4,
+                  "col" : 0
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "color" : "rgba(0,0,0,0.870588)",
+                "columns" : 24,
+                "margin" : 10,
+                "backgroundSizeMode" : "100%"
+              }
+            }
+          }
+        }
+      },
+      "entityAliases" : {
+        "3498274c-597c-2271-e455-bee51fee6320" : {
+          "id" : "3498274c-597c-2271-e455-bee51fee6320",
+          "alias" : "NODO RIG 3080",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "a4953090-310d-11ed-84c7-a996325bb5fa"
+            }
+          }
+        },
+        "88a83ad8-4e5e-7676-643c-809caf7cc9a7" : {
+          "id" : "88a83ad8-4e5e-7676-643c-809caf7cc9a7",
+          "alias" : "AMD 6900",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "14039210-3126-11ed-989b-f327fd3e6ae1"
+            }
+          }
+        },
+        "90106a32-07a1-4cd7-800a-4cd5ad1cdbc8" : {
+          "id" : "90106a32-07a1-4cd7-800a-4cd5ad1cdbc8",
+          "alias" : "fotovoltaico",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "31553170-3cd9-11ed-82c5-dfdc1fc904c8"
+            }
+          }
+        }
+      },
+      "filters" : { },
+      "timewindow" : {
+        "displayValue" : "",
+        "hideInterval" : false,
+        "hideAggregation" : false,
+        "hideAggInterval" : false,
+        "selectedTab" : 0,
+        "realtime" : {
+          "interval" : 1000,
+          "timewindowMs" : 60000
+        },
+        "history" : {
+          "historyType" : 0,
+          "interval" : 1000,
+          "timewindowMs" : 60000,
+          "fixedTimewindow" : {
+            "startTimeMs" : 1662730662360,
+            "endTimeMs" : 1662817062360
+          }
+        },
+        "aggregation" : {
+          "type" : "AVG",
+          "limit" : 25000
+        }
+      },
+      "settings" : {
+        "stateControllerId" : "entity",
+        "showTitle" : false,
+        "showDashboardsSelect" : true,
+        "showEntitiesSelect" : true,
+        "showDashboardTimewindow" : true,
+        "showDashboardExport" : true,
+        "toolbarAlwaysOpen" : true
+      }
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "bd9be5c0-310d-11ed-84c7-a996325bb5fa"
+    },
+    "image" : null,
+    "mobileHide" : false,
+    "mobileOrder" : null,
+    "name" : "GESTIONE RIG",
+    "title" : "GESTIONE RIG"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

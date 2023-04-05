@@ -1,0 +1,538 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "assignedCustomers" : null,
+    "configuration" : {
+      "description" : "",
+      "widgets" : {
+        "a1ea579b-44c2-d6b2-acdf-567bc64981b2" : {
+          "isSystemType" : false,
+          "bundleAlias" : "bundle_di_test",
+          "typeAlias" : "basic_timeseries",
+          "type" : "timeseries",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 8,
+          "sizeY" : 5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "3c851471-fb8f-8bf6-bca0-c601d723f176",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "P1",
+                "type" : "timeseries",
+                "label" : "P1",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.489754637145122
+              }, {
+                "name" : "P2",
+                "type" : "timeseries",
+                "label" : "P2",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.7020749503140449
+              }, {
+                "name" : "P3",
+                "type" : "timeseries",
+                "label" : "P3",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.008652186451858723
+              } ],
+              "latestDataKeys" : [ ]
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "timewindowMs" : 60000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "shadowSize" : 4,
+              "fontColor" : "#545454",
+              "fontSize" : 10,
+              "xaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "yaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "grid" : {
+                "color" : "#545454",
+                "tickColor" : "#DDDDDD",
+                "verticalLines" : true,
+                "horizontalLines" : true,
+                "outlineWidth" : 1
+              },
+              "legend" : {
+                "show" : true,
+                "position" : "nw",
+                "backgroundColor" : "#f0f0f0",
+                "backgroundOpacity" : 0.85,
+                "labelBoxBorderColor" : "rgba(1, 1, 1, 0.45)"
+              },
+              "decimals" : 1,
+              "stack" : false,
+              "tooltipIndividual" : false
+            },
+            "title" : "New Timeseries with download",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "actions" : {
+              "headerButton" : [ {
+                "name" : "download csv",
+                "icon" : "file_download",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "customPretty",
+                "customHtml" : "<form #addEntityForm=\"ngForm\" [formGroup]=\"addEntityFormGroup\"\n      (ngSubmit)=\"save()\" class=\"add-entity-form\">\n    <mat-toolbar fxLayout=\"row\" color=\"primary\">\n        <h2>Scarica CSV</h2>\n        <span fxFlex></span>\n        <button mat-icon-button (click)=\"cancel()\" type=\"button\">\n            <mat-icon class=\"material-icons\">close</mat-icon>\n        </button>\n    </mat-toolbar>\n\n    <div mat-dialog-content fxLayout=\"column\">\n        <div fxLayout=\"row\" fxLayoutGap=\"8px\" fxLayout.xs=\"column\"  fxLayoutGap.xs=\"0\">\n            <mat-form-field fxFlex class=\"mat-block\">\n                <mat-label>Numero elementi</mat-label>\n                <input matInput formControlName=\"elementNumber\" type=\"number\" (change)=\"elementNumber()\" [(ngModel)]=\"myValue\">\n                    <mat-error *ngIf=\"addEntityFormGroup.get('attributes.elementNumber').hasError('pattern')\">\n                        Invalid integer value.\n                    </mat-error>\n                    <mat-hint>Default value: 100</mat-hint>\n            </mat-form-field>\n        </div>\n    </div>\n  \n    <div mat-dialog-actions fxLayout=\"row\" fxLayoutAlign=\"end center\">\n        <button mat-button color=\"primary\"\n                type=\"button\"\n                [disabled]=\"false\"\n                (click)=\"cancel()\" cdkFocusInitial>\n            Annulla\n        </button>\n        <button mat-button mat-raised-button color=\"primary\"\n                type=\"submit\"\n                [disabled]=\"false\"\n                (click)=\"download()\" cdkFocusInitial>\n            Scarica\n        </button>\n    </div>\n</form>\n",
+                "customCss" : "\n.add-entity-form .boolean-value-input {\n    padding-left: 5px;\n}\n\n.add-entity-form .boolean-value-input .checkbox-label {\n    margin-bottom: 8px;\n    color: rgba(0,0,0,0.54);\n    font-size: 12px;\n}\n\n.relations-list .header {\n    padding-right: 5px;\n    padding-bottom: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .header .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n    font-size: 12px;\n    font-weight: 700;\n    color: rgba(0, 0, 0, .54);\n    white-space: nowrap;\n}\n\n.relations-list .mat-form-field-infix {\n    width: auto !important;\n}\n\n.relations-list .body {\n    padding-right: 5px;\n    padding-bottom: 15px;\n    padding-left: 5px;\n}\n\n.relations-list .body .row {\n    padding-top: 5px;\n}\n\n.relations-list .body .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .body .md-button {\n    margin: 0;\n}\n\n",
+                "customFunction" : "\nlet $injector = widgetContext.$scope.$injector;\n\nvar fileOutput=\"\";\nvar keys=[];\nvar starTs;\nvar endTs;\nvar dataKeysDevice=[];\nvar element=100;\n\nlet customDialog = $injector.get(widgetContext.servicesMap.get('customDialog'));\n\nlet assetService = $injector.get(widgetContext.servicesMap.get('assetService'));\nlet deviceService = $injector.get(widgetContext.servicesMap.get('deviceService'));\nlet attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));\nlet entityRelationService = $injector.get(widgetContext.servicesMap.get('entityRelationService'));\n\n\nopenAddEntityDialog();\n\nfunction openAddEntityDialog() {\n    customDialog.customDialog(htmlTemplate, AddEntityDialogController).subscribe();\n}\n\nfunction AddEntityDialogController(instance) {\n    let vm = instance;\n\n    vm.allowedEntityTypes = ['ASSET', 'DEVICE'];\n    vm.entitySearchDirection = {\n        from: \"FROM\",\n        to: \"TO\"\n    }\n\n    vm.dataKeyType = \"timeseries\"\n    \n    vm.addEntityFormGroup = vm.fb.group({\n        elementNumber: [null, [vm.validators.pattern(/^-?[0-9]+$/)]], \n        entityName: ['', [vm.validators.required]],\n      entityType: ['DEVICE'],\n      entityLabel: [null],\n      type: ['', [vm.validators.required]],\n      attributes: vm.fb.group({\n          latitude: [null],\n          longitude: [null],\n          address: [null],\n          owner: [null],\n          number: [null, [vm.validators.pattern(/^-?[0-9]+$/)]],\n          elementNumber: [null, [vm.validators.pattern(/^-?[0-9]+$/)]], \n          booleanValue: [null]\n      }),\n    });\n\n    vm.starTs=widgetContext.timeWindow.minTime;\n    vm.endTs=widgetContext.timeWindow.maxTime;\n    vm.numberRow=element;\n    vm.keys=widgetContext.datasources[0];\n\tvm.file=fileOutput;\n\t\n\tgetEntityInfo();\n\t\n\tfunction getEntityInfo() {\n\t    starTs=widgetContext.timeWindow.minTime;\n        endTs=widgetContext.timeWindow.maxTime;\n        var numberRow=element;\n        keys=widgetContext.datasources[0];\n        \n        for(let i=0; i<keys.dataKeys.length;i++){\n            let key=keys.dataKeys[i].name;\n            dataKeysDevice[i] = key\n        }\n    \n          widgetContext.rxjs.forkJoin([\n             \n        //     //getEntityTimeseries(entityId: EntityId, keys: Array<string>, startTs: number, endTs: number, limit: number, agg: Aggregation Type, interval: number, orderBy: Data Sort Order, useStrictDataTypes: boolean, config?: RequestConfig): Observable<Timeseries Data>\n        //     //export enum AggregationType {\n        //     //   MIN = 'MIN',\n        //     //   MAX = 'MAX',\n        //     //   AVG = 'AVG',\n        //     //   SUM = 'SUM',\n        //     //   COUNT = 'COUNT',\n        //     //   NONE = 'NONE'\n        //     // }\n            \n        //     // export enum DataSortOrder {\n        //     //     ASC = 'ASC',\n        //     //     DESC = 'DESC'\n        //     // }\n            //  attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element)\n            attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element, 'NONE', 0, 'ASC', false)\n          ]).subscribe(\n              function (data) {\n               \n               var parts = \"device;key; ts; value\\n\";\n\n                if(data.length > 0){\n                     for(let i=0; i<data.length;i++){\n                        let current=data[i];\n                        \n                      \n                         Object.keys(current).forEach( key => {\n                            current[key].forEach (element => {\n                                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\n                            })\n                        })\n                    \n                     }\n                }\n                fileOutput=parts;\n        \t\tvm.file=fileOutput;\n                    \n              }\n             );\n\t} \n\t\n    vm.elementNumber = function() {\n        if(vm.myValue && vm.myValue>0 ){\n            vm.numberRow=vm.myValue;\n        }else{\n            vm.numberRow=100;\n        }\n\t\t\n \t\tgetEntityInfoValue();\n    };\n    \n \tfunction getEntityInfoValue() {\n      \n        var starTs=vm.starTs;\n        var endTs=vm.endTs;\n        var keys=vm.keys;\n\t\tvar element=vm.numberRow;\t\t       \n\t    var dataKeysDevice=[];\n\n        for(let i=0; i<keys.dataKeys.length;i++){\n            let key=keys.dataKeys[i].name;\n            dataKeysDevice[i] = key\n        }  \n\n        \n          widgetContext.rxjs.forkJoin([\n             \n        //     //getEntityTimeseries(entityId: EntityId, keys: Array<string>, startTs: number, endTs: number, limit: number, agg: Aggregation Type, interval: number, orderBy: Data Sort Order, useStrictDataTypes: boolean, config?: RequestConfig): Observable<Timeseries Data>\n        //     //export enum AggregationType {\n        //     //   MIN = 'MIN',\n        //     //   MAX = 'MAX',\n        //     //   AVG = 'AVG',\n        //     //   SUM = 'SUM',\n        //     //   COUNT = 'COUNT',\n        //     //   NONE = 'NONE'\n        //     // }\n            \n        //     // export enum DataSortOrder {\n        //     //     ASC = 'ASC',\n        //     //     DESC = 'DESC'\n        //     // }\n             attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element)\n          ]).subscribe(\n              function (data) {\n                   var parts = \"device;key; ts; value\\n\";\n                    debugger;\n                    if(data.length > 0){\n                     for(let i=0; i<data.length;i++){\n                        let current=data[i];\n                        \n                      \n                         Object.keys(current).forEach( key => {\n                            current[key].forEach (element => {\n                                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\n                            })\n                        })\n                    \n                     }\n                }\n                    fileOutput=parts;\n            \t\tvm.file=fileOutput;\n             \n              }\n             );\n    \n    }\n    \n    vm.download=function() {\n       downloadFile('timeseries.csv', 'data:text/csv;charset=UTF-8,' + encodeURIComponent(fileOutput));\n   }\n   \n    function downloadFile(fileName, urlData) {\n        var aLink = document.createElement('a');\n        var evt = document.createEvent(\"HTMLEvents\");\n        evt.initEvent(\"click\");\n        aLink.download = fileName;\n        aLink.href = urlData;\n        aLink.dispatchEvent(evt);\n        aLink.click();\n        vm.dialogRef.close(null);\n    } \n    \n        vm.save = function() {\n        vm.addEntityFormGroup.markAsPristine();\n        widgetContext.rxjs.forkJoin([\n            \n        ]).subscribe(\n            function () {\n                vm.dialogRef.close(null);\n            }\n        );\n    };\n\n    vm.cancel = function() {\n        vm.dialogRef.close(null);\n    };\n}\n",
+                "customResources" : [ ],
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "bf221294-d4f3-bdb0-9439-4b2b42834d34"
+              } ]
+            },
+            "useDashboardTimewindow" : true,
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "a1ea579b-44c2-d6b2-acdf-567bc64981b2"
+        },
+        "32f19514-be87-9262-534f-816200d8116d" : {
+          "isSystemType" : false,
+          "bundleAlias" : "bundle_di_test",
+          "typeAlias" : "basic_timeseries",
+          "type" : "timeseries",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 8,
+          "sizeY" : 5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "3c851471-fb8f-8bf6-bca0-c601d723f176",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "I1",
+                "type" : "timeseries",
+                "label" : "I1",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.6856150365963156
+              }, {
+                "name" : "I2",
+                "type" : "timeseries",
+                "label" : "I2",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.9628930036093233
+              }, {
+                "name" : "I3",
+                "type" : "timeseries",
+                "label" : "I3",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.3582968724606761
+              } ],
+              "latestDataKeys" : [ ]
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "timewindowMs" : 60000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "shadowSize" : 4,
+              "fontColor" : "#545454",
+              "fontSize" : 10,
+              "xaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "yaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "grid" : {
+                "color" : "#545454",
+                "tickColor" : "#DDDDDD",
+                "verticalLines" : true,
+                "horizontalLines" : true,
+                "outlineWidth" : 1
+              },
+              "legend" : {
+                "show" : true,
+                "position" : "nw",
+                "backgroundColor" : "#f0f0f0",
+                "backgroundOpacity" : 0.85,
+                "labelBoxBorderColor" : "rgba(1, 1, 1, 0.45)"
+              },
+              "decimals" : 1,
+              "stack" : false,
+              "tooltipIndividual" : false
+            },
+            "title" : "Grafico Consumi v2",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "actions" : {
+              "headerButton" : [ {
+                "name" : "download csv",
+                "icon" : "file_download",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "customPretty",
+                "customHtml" : "<form #addEntityForm=\"ngForm\" [formGroup]=\"addEntityFormGroup\"\n      (ngSubmit)=\"save()\" class=\"add-entity-form\">\n    <mat-toolbar fxLayout=\"row\" color=\"primary\">\n        <h2>Scarica CSV</h2>\n        <span fxFlex></span>\n        <button mat-icon-button (click)=\"cancel()\" type=\"button\">\n            <mat-icon class=\"material-icons\">close</mat-icon>\n        </button>\n    </mat-toolbar>\n\n    <div mat-dialog-content fxLayout=\"column\">\n        <div fxLayout=\"row\" fxLayoutGap=\"8px\" fxLayout.xs=\"column\"  fxLayoutGap.xs=\"0\">\n            <mat-form-field fxFlex class=\"mat-block\">\n                <mat-label>Numero elementi</mat-label>\n                <input matInput formControlName=\"elementNumber\" type=\"number\" (change)=\"elementNumber()\" [(ngModel)]=\"myValue\">\n                    <mat-error *ngIf=\"addEntityFormGroup.get('attributes.elementNumber').hasError('pattern')\">\n                        Invalid integer value.\n                    </mat-error>\n                    <mat-hint>Default value: 100</mat-hint>\n            </mat-form-field>\n        </div>\n    </div>\n  \n    <div mat-dialog-actions fxLayout=\"row\" fxLayoutAlign=\"end center\">\n        <button mat-button color=\"primary\"\n                type=\"button\"\n                [disabled]=\"false\"\n                (click)=\"cancel()\" cdkFocusInitial>\n            Annulla\n        </button>\n        <button mat-button mat-raised-button color=\"primary\"\n                type=\"submit\"\n                [disabled]=\"false\"\n                (click)=\"download()\" cdkFocusInitial>\n            Scarica\n        </button>\n    </div>\n</form>\n",
+                "customCss" : "\n.add-entity-form .boolean-value-input {\n    padding-left: 5px;\n}\n\n.add-entity-form .boolean-value-input .checkbox-label {\n    margin-bottom: 8px;\n    color: rgba(0,0,0,0.54);\n    font-size: 12px;\n}\n\n.relations-list .header {\n    padding-right: 5px;\n    padding-bottom: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .header .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n    font-size: 12px;\n    font-weight: 700;\n    color: rgba(0, 0, 0, .54);\n    white-space: nowrap;\n}\n\n.relations-list .mat-form-field-infix {\n    width: auto !important;\n}\n\n.relations-list .body {\n    padding-right: 5px;\n    padding-bottom: 15px;\n    padding-left: 5px;\n}\n\n.relations-list .body .row {\n    padding-top: 5px;\n}\n\n.relations-list .body .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .body .md-button {\n    margin: 0;\n}\n\n",
+                "customFunction" : "\nlet $injector = widgetContext.$scope.$injector;\n\nvar fileOutput=\"\";\nvar keys=[];\nvar starTs;\nvar endTs;\nvar dataKeysDevice=[];\nvar element=100;\n\nlet customDialog = $injector.get(widgetContext.servicesMap.get('customDialog'));\n\nlet assetService = $injector.get(widgetContext.servicesMap.get('assetService'));\nlet deviceService = $injector.get(widgetContext.servicesMap.get('deviceService'));\nlet attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));\nlet entityRelationService = $injector.get(widgetContext.servicesMap.get('entityRelationService'));\n\n\nopenAddEntityDialog();\n\nfunction openAddEntityDialog() {\n    customDialog.customDialog(htmlTemplate, AddEntityDialogController).subscribe();\n}\n\nfunction AddEntityDialogController(instance) {\n    let vm = instance;\n\n    vm.allowedEntityTypes = ['ASSET', 'DEVICE'];\n    vm.entitySearchDirection = {\n        from: \"FROM\",\n        to: \"TO\"\n    }\n\n    vm.dataKeyType = \"timeseries\"\n    \n    vm.addEntityFormGroup = vm.fb.group({\n        elementNumber: [null, [vm.validators.pattern(/^-?[0-9]+$/)]], \n        entityName: ['', [vm.validators.required]],\n      entityType: ['DEVICE'],\n      entityLabel: [null],\n      type: ['', [vm.validators.required]],\n      attributes: vm.fb.group({\n          latitude: [null],\n          longitude: [null],\n          address: [null],\n          owner: [null],\n          number: [null, [vm.validators.pattern(/^-?[0-9]+$/)]],\n          elementNumber: [null, [vm.validators.pattern(/^-?[0-9]+$/)]], \n          booleanValue: [null]\n      }),\n    });\n\n    vm.starTs=widgetContext.timeWindow.minTime;\n    vm.endTs=widgetContext.timeWindow.maxTime;\n    vm.numberRow=element;\n    vm.keys=widgetContext.datasources[0];\n\tvm.file=fileOutput;\n\t\n\tgetEntityInfo();\n\t\n\tfunction getEntityInfo() {\n\t    starTs=widgetContext.timeWindow.minTime;\n        endTs=widgetContext.timeWindow.maxTime;\n        var numberRow=element;\n        keys=widgetContext.datasources[0];\n        \n        for(let i=0; i<keys.dataKeys.length;i++){\n            let key=keys.dataKeys[i].name;\n            dataKeysDevice[i] = key\n        }\n    \n          widgetContext.rxjs.forkJoin([\n             \n        //     //getEntityTimeseries(entityId: EntityId, keys: Array<string>, startTs: number, endTs: number, limit: number, agg: Aggregation Type, interval: number, orderBy: Data Sort Order, useStrictDataTypes: boolean, config?: RequestConfig): Observable<Timeseries Data>\n        //     //export enum AggregationType {\n        //     //   MIN = 'MIN',\n        //     //   MAX = 'MAX',\n        //     //   AVG = 'AVG',\n        //     //   SUM = 'SUM',\n        //     //   COUNT = 'COUNT',\n        //     //   NONE = 'NONE'\n        //     // }\n            \n        //     // export enum DataSortOrder {\n        //     //     ASC = 'ASC',\n        //     //     DESC = 'DESC'\n        //     // }\n            //  attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element)\n            attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element, 'NONE', 0, 'ASC', false)\n          ]).subscribe(\n              function (data) {\n               \n               var parts = \"device;key; ts; value\\n\";\n\n                if(data.length > 0){\n                     for(let i=0; i<data.length;i++){\n                        let current=data[i];\n                        \n                      \n                         Object.keys(current).forEach( key => {\n                            current[key].forEach (element => {\n                                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\n                            })\n                        })\n                    \n                     }\n                }\n                fileOutput=parts;\n        \t\tvm.file=fileOutput;\n                    \n              }\n             );\n\t} \n\t\n    vm.elementNumber = function() {\n        if(vm.myValue && vm.myValue>0 ){\n            vm.numberRow=vm.myValue;\n        }else{\n            vm.numberRow=100;\n        }\n\t\t\n \t\tgetEntityInfoValue();\n    };\n    \n \tfunction getEntityInfoValue() {\n      \n        var starTs=vm.starTs;\n        var endTs=vm.endTs;\n        var keys=vm.keys;\n\t\tvar element=vm.numberRow;\t\t       \n\t    var dataKeysDevice=[];\n\n        for(let i=0; i<keys.dataKeys.length;i++){\n            let key=keys.dataKeys[i].name;\n            dataKeysDevice[i] = key\n        }  \n\n        \n          widgetContext.rxjs.forkJoin([\n             \n        //     //getEntityTimeseries(entityId: EntityId, keys: Array<string>, startTs: number, endTs: number, limit: number, agg: Aggregation Type, interval: number, orderBy: Data Sort Order, useStrictDataTypes: boolean, config?: RequestConfig): Observable<Timeseries Data>\n        //     //export enum AggregationType {\n        //     //   MIN = 'MIN',\n        //     //   MAX = 'MAX',\n        //     //   AVG = 'AVG',\n        //     //   SUM = 'SUM',\n        //     //   COUNT = 'COUNT',\n        //     //   NONE = 'NONE'\n        //     // }\n            \n        //     // export enum DataSortOrder {\n        //     //     ASC = 'ASC',\n        //     //     DESC = 'DESC'\n        //     // }\n             attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element)\n          ]).subscribe(\n              function (data) {\n                   var parts = \"device;key; ts; value\\n\";\n                    debugger;\n                    if(data.length > 0){\n                     for(let i=0; i<data.length;i++){\n                        let current=data[i];\n                        \n                      \n                         Object.keys(current).forEach( key => {\n                            current[key].forEach (element => {\n                                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\n                            })\n                        })\n                    \n                     }\n                }\n                    fileOutput=parts;\n            \t\tvm.file=fileOutput;\n             \n              }\n             );\n    \n    }\n    \n    vm.download=function() {\n       downloadFile('timeseries.csv', 'data:text/csv;charset=UTF-8,' + encodeURIComponent(fileOutput));\n   }\n   \n    function downloadFile(fileName, urlData) {\n        var aLink = document.createElement('a');\n        var evt = document.createEvent(\"HTMLEvents\");\n        evt.initEvent(\"click\");\n        aLink.download = fileName;\n        aLink.href = urlData;\n        aLink.dispatchEvent(evt);\n        aLink.click();\n        vm.dialogRef.close(null);\n    } \n    \n        vm.save = function() {\n        vm.addEntityFormGroup.markAsPristine();\n        widgetContext.rxjs.forkJoin([\n            \n        ]).subscribe(\n            function () {\n                vm.dialogRef.close(null);\n            }\n        );\n    };\n\n    vm.cancel = function() {\n        vm.dialogRef.close(null);\n    };\n}\n",
+                "customResources" : [ ],
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "bf221294-d4f3-bdb0-9439-4b2b42834d34"
+              } ]
+            },
+            "showTitleIcon" : false,
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "showLegend" : false,
+            "legendConfig" : {
+              "direction" : "column",
+              "position" : "bottom",
+              "sortDataKeys" : false,
+              "showMin" : false,
+              "showMax" : false,
+              "showAvg" : true,
+              "showTotal" : false,
+              "showLatest" : false
+            },
+            "useDashboardTimewindow" : true
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "32f19514-be87-9262-534f-816200d8116d"
+        },
+        "34222db6-fa18-3863-5603-1779047e99df" : {
+          "isSystemType" : false,
+          "bundleAlias" : "bundle_di_test",
+          "typeAlias" : "timeseries_table",
+          "type" : "timeseries",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 8,
+          "sizeY" : 6.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "3c851471-fb8f-8bf6-bca0-c601d723f176",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "P1",
+                "type" : "timeseries",
+                "label" : "P1",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.1891407894095385
+              } ],
+              "latestDataKeys" : [ ]
+            } ],
+            "timewindow" : {
+              "hideInterval" : false,
+              "hideAggregation" : false,
+              "hideAggInterval" : false,
+              "hideTimezone" : false,
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 0,
+                "timewindowMs" : 86400000,
+                "quickInterval" : "CURRENT_DAY",
+                "interval" : 1000
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "showTimestamp" : true,
+              "displayPagination" : true,
+              "defaultPageSize" : 10
+            },
+            "title" : "New Timeseries table",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400,
+              "padding" : "5px 10px 5px 10px"
+            },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "widgetStyle" : { },
+            "actions" : {
+              "headerButton" : [ {
+                "name" : "test_table2csv",
+                "icon" : "file_download",
+                "useShowWidgetActionFunction" : false,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "customPretty",
+                "customHtml" : "<form #addEntityForm=\"ngForm\" [formGroup]=\"addEntityFormGroup\"\n      (ngSubmit)=\"save()\" class=\"add-entity-form\">\n    <mat-toolbar fxLayout=\"row\" color=\"primary\">\n        <h2>Scarica CSV</h2>\n        <span fxFlex></span>\n        <button mat-icon-button (click)=\"cancel()\" type=\"button\">\n            <mat-icon class=\"material-icons\">close</mat-icon>\n        </button>\n    </mat-toolbar>\n\n    <div mat-dialog-content fxLayout=\"column\">\n        <div fxLayout=\"row\" fxLayoutGap=\"8px\" fxLayout.xs=\"column\"  fxLayoutGap.xs=\"0\">\n            <mat-form-field fxFlex class=\"mat-block\">\n                <mat-label>Numero elementi</mat-label>\n                <input matInput formControlName=\"elementNumber\" type=\"number\" (change)=\"elementNumber()\" [(ngModel)]=\"myValue\">\n                    <mat-error *ngIf=\"addEntityFormGroup.get('attributes.elementNumber').hasError('pattern')\">\n                        Invalid integer value.\n                    </mat-error>\n                    <mat-hint>Default value: 100</mat-hint>\n            </mat-form-field>\n        </div>\n    </div>\n  \n    <div mat-dialog-actions fxLayout=\"row\" fxLayoutAlign=\"end center\">\n        <button mat-button color=\"primary\"\n                type=\"button\"\n                [disabled]=\"false\"\n                (click)=\"cancel()\" cdkFocusInitial>\n            Annulla\n        </button>\n        <button mat-button mat-raised-button color=\"primary\"\n                type=\"submit\"\n                [disabled]=\"false\"\n                (click)=\"download()\" cdkFocusInitial>\n            Scarica\n        </button>\n    </div>\n</form>\n",
+                "customCss" : "/*=======================================================================*/\n/*==========  There are two examples: for edit and add entity  ==========*/\n/*=======================================================================*/\n/*========================  Edit entity example  ========================*/\n/*=======================================================================*/\n/*\n.edit-entity-form .boolean-value-input {\n    padding-left: 5px;\n}\n\n.edit-entity-form .boolean-value-input .checkbox-label {\n    margin-bottom: 8px;\n    color: rgba(0,0,0,0.54);\n    font-size: 12px;\n}\n\n.relations-list .header {\n    padding-right: 5px;\n    padding-bottom: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .header .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n    font-size: 12px;\n    font-weight: 700;\n    color: rgba(0, 0, 0, .54);\n    white-space: nowrap;\n}\n\n.relations-list .mat-form-field-infix {\n    width: auto !important;\n}\n\n.relations-list .body {\n    padding-right: 5px;\n    padding-bottom: 15px;\n    padding-left: 5px;\n}\n\n.relations-list .body .row {\n    padding-top: 5px;\n}\n\n.relations-list .body .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .body .md-button {\n    margin: 0;\n}\n*/\n/*========================================================================*/\n/*=========================  Add entity example  =========================*/\n/*========================================================================*/\n/*\n.add-entity-form .boolean-value-input {\n    padding-left: 5px;\n}\n\n.add-entity-form .boolean-value-input .checkbox-label {\n    margin-bottom: 8px;\n    color: rgba(0,0,0,0.54);\n    font-size: 12px;\n}\n\n.relations-list .header {\n    padding-right: 5px;\n    padding-bottom: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .header .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n    font-size: 12px;\n    font-weight: 700;\n    color: rgba(0, 0, 0, .54);\n    white-space: nowrap;\n}\n\n.relations-list .mat-form-field-infix {\n    width: auto !important;\n}\n\n.relations-list .body {\n    padding-right: 5px;\n    padding-bottom: 15px;\n    padding-left: 5px;\n}\n\n.relations-list .body .row {\n    padding-top: 5px;\n}\n\n.relations-list .body .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .body .md-button {\n    margin: 0;\n}\n*/\n",
+                "customFunction" : "\nlet $injector = widgetContext.$scope.$injector;\n\nvar fileOutput=\"\";\nvar keys=[];\nvar starTs;\nvar endTs;\nvar dataKeysDevice=[];\nvar element=100;\n\nlet customDialog = $injector.get(widgetContext.servicesMap.get('customDialog'));\n\nlet assetService = $injector.get(widgetContext.servicesMap.get('assetService'));\nlet deviceService = $injector.get(widgetContext.servicesMap.get('deviceService'));\nlet attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));\nlet entityRelationService = $injector.get(widgetContext.servicesMap.get('entityRelationService'));\n\n\nopenAddEntityDialog();\n\nfunction openAddEntityDialog() {\n    customDialog.customDialog(htmlTemplate, AddEntityDialogController).subscribe();\n}\n\nfunction AddEntityDialogController(instance) {\n    let vm = instance;\n\n    vm.allowedEntityTypes = ['ASSET', 'DEVICE'];\n    vm.entitySearchDirection = {\n        from: \"FROM\",\n        to: \"TO\"\n    }\n\n    vm.dataKeyType = \"timeseries\"\n    \n    vm.addEntityFormGroup = vm.fb.group({\n        elementNumber: [null, [vm.validators.pattern(/^-?[0-9]+$/)]], \n        entityName: ['', [vm.validators.required]],\n      entityType: ['DEVICE'],\n      entityLabel: [null],\n      type: ['', [vm.validators.required]],\n      attributes: vm.fb.group({\n          latitude: [null],\n          longitude: [null],\n          address: [null],\n          owner: [null],\n          number: [null, [vm.validators.pattern(/^-?[0-9]+$/)]],\n          elementNumber: [null, [vm.validators.pattern(/^-?[0-9]+$/)]], \n          booleanValue: [null]\n      }),\n    });\n\n    vm.starTs=widgetContext.timeWindow.minTime;\n    vm.endTs=widgetContext.timeWindow.maxTime;\n    vm.numberRow=element;\n    vm.keys=widgetContext.datasources[0];\n\tvm.file=fileOutput;\n\t\n\tgetEntityInfo();\n\t\n\tfunction getEntityInfo() {\n\t    starTs=widgetContext.timeWindow.minTime;\n        endTs=widgetContext.timeWindow.maxTime;\n        var numberRow=element;\n        keys=widgetContext.datasources[0];\n        \n        for(let i=0; i<keys.dataKeys.length;i++){\n            let key=keys.dataKeys[i].name;\n            dataKeysDevice[i] = key\n        }\n    \n          widgetContext.rxjs.forkJoin([\n             \n        //     //getEntityTimeseries(entityId: EntityId, keys: Array<string>, startTs: number, endTs: number, limit: number, agg: Aggregation Type, interval: number, orderBy: Data Sort Order, useStrictDataTypes: boolean, config?: RequestConfig): Observable<Timeseries Data>\n        //     //export enum AggregationType {\n        //     //   MIN = 'MIN',\n        //     //   MAX = 'MAX',\n        //     //   AVG = 'AVG',\n        //     //   SUM = 'SUM',\n        //     //   COUNT = 'COUNT',\n        //     //   NONE = 'NONE'\n        //     // }\n            \n        //     // export enum DataSortOrder {\n        //     //     ASC = 'ASC',\n        //     //     DESC = 'DESC'\n        //     // }\n            //  attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element)\n            attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element, 'NONE', 0, 'ASC', false)\n          ]).subscribe(\n              function (data) {\n               \n               var parts = \"device;key; ts; value\\n\";\n\n                if(data.length > 0){\n                     for(let i=0; i<data.length;i++){\n                        let current=data[i];\n                        \n                      \n                         Object.keys(current).forEach( key => {\n                            current[key].forEach (element => {\n                                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\n                            })\n                        })\n                    \n                     }\n                }\n                fileOutput=parts;\n        \t\tvm.file=fileOutput;\n                    \n              }\n             );\n\t} \n\t\n    vm.elementNumber = function() {\n        if(vm.myValue && vm.myValue>0 ){\n            vm.numberRow=vm.myValue;\n        }else{\n            vm.numberRow=100;\n        }\n\t\t\n \t\tgetEntityInfoValue();\n    };\n    \n \tfunction getEntityInfoValue() {\n      \n        var starTs=vm.starTs;\n        var endTs=vm.endTs;\n        var keys=vm.keys;\n\t\tvar element=vm.numberRow;\t\t       \n\t    var dataKeysDevice=[];\n\n        for(let i=0; i<keys.dataKeys.length;i++){\n            let key=keys.dataKeys[i].name;\n            dataKeysDevice[i] = key\n        }  \n\n        \n          widgetContext.rxjs.forkJoin([\n             \n        //     //getEntityTimeseries(entityId: EntityId, keys: Array<string>, startTs: number, endTs: number, limit: number, agg: Aggregation Type, interval: number, orderBy: Data Sort Order, useStrictDataTypes: boolean, config?: RequestConfig): Observable<Timeseries Data>\n        //     //export enum AggregationType {\n        //     //   MIN = 'MIN',\n        //     //   MAX = 'MAX',\n        //     //   AVG = 'AVG',\n        //     //   SUM = 'SUM',\n        //     //   COUNT = 'COUNT',\n        //     //   NONE = 'NONE'\n        //     // }\n            \n        //     // export enum DataSortOrder {\n        //     //     ASC = 'ASC',\n        //     //     DESC = 'DESC'\n        //     // }\n             attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element)\n          ]).subscribe(\n              function (data) {\n                   var parts = \"device;key; ts; value\\n\";\n                    debugger;\n                    if(data.length > 0){\n                     for(let i=0; i<data.length;i++){\n                        let current=data[i];\n                        \n                      \n                         Object.keys(current).forEach( key => {\n                            current[key].forEach (element => {\n                                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\n                            })\n                        })\n                    \n                     }\n                }\n                    fileOutput=parts;\n            \t\tvm.file=fileOutput;\n             \n              }\n             );\n    \n    }\n    \n    vm.download=function() {\n       downloadFile('timeseries.csv', 'data:text/csv;charset=UTF-8,' + encodeURIComponent(fileOutput));\n   }\n   \n    function downloadFile(fileName, urlData) {\n        var aLink = document.createElement('a');\n        var evt = document.createEvent(\"HTMLEvents\");\n        evt.initEvent(\"click\");\n        aLink.download = fileName;\n        aLink.href = urlData;\n        aLink.dispatchEvent(evt);\n        aLink.click();\n        vm.dialogRef.close(null);\n    } \n    \n        vm.save = function() {\n        vm.addEntityFormGroup.markAsPristine();\n        widgetContext.rxjs.forkJoin([\n            \n        ]).subscribe(\n            function () {\n                vm.dialogRef.close(null);\n            }\n        );\n    };\n\n    vm.cancel = function() {\n        vm.dialogRef.close(null);\n    };\n}\n",
+                "customResources" : [ ],
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "fca49f5e-25fe-f9b7-bc26-ce96236f85df"
+              } ]
+            },
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "displayTimewindow" : true
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "34222db6-fa18-3863-5603-1779047e99df"
+        },
+        "61bcdf3c-085d-6956-e656-89b6ca444ece" : {
+          "isSystemType" : false,
+          "bundleAlias" : "bundle_di_test",
+          "typeAlias" : "timeseries_table2",
+          "type" : "timeseries",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 8,
+          "sizeY" : 6.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "3c851471-fb8f-8bf6-bca0-c601d723f176",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "I1",
+                "type" : "timeseries",
+                "label" : "I1",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.4900066114481263
+              }, {
+                "name" : "I2",
+                "type" : "timeseries",
+                "label" : "I2",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.0028349456479001
+              }, {
+                "name" : "I3",
+                "type" : "timeseries",
+                "label" : "I3",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.13552011455431667
+              } ],
+              "latestDataKeys" : [ ]
+            } ],
+            "timewindow" : {
+              "hideInterval" : false,
+              "hideAggregation" : false,
+              "hideAggInterval" : false,
+              "hideTimezone" : false,
+              "selectedTab" : 0,
+              "realtime" : {
+                "realtimeType" : 0,
+                "timewindowMs" : 86460000,
+                "quickInterval" : "CURRENT_DAY",
+                "interval" : 1000
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "showTimestamp" : true,
+              "displayPagination" : true,
+              "defaultPageSize" : 10
+            },
+            "title" : "New Timeseries table csv",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400,
+              "padding" : "5px 10px 5px 10px"
+            },
+            "useDashboardTimewindow" : false,
+            "showLegend" : false,
+            "widgetStyle" : { },
+            "actions" : {
+              "headerButton" : [ {
+                "name" : "Download CSV",
+                "icon" : "file_download",
+                "useShowWidgetActionFunction" : null,
+                "showWidgetActionFunction" : "return true;",
+                "type" : "customPretty",
+                "customHtml" : "<form #addEntityForm=\"ngForm\" [formGroup]=\"addEntityFormGroup\"\n      (ngSubmit)=\"save()\" class=\"add-entity-form\">\n    <mat-toolbar fxLayout=\"row\" color=\"primary\">\n        <h2>Scarica CSV</h2>\n        <span fxFlex></span>\n        <button mat-icon-button (click)=\"cancel()\" type=\"button\">\n            <mat-icon class=\"material-icons\">close</mat-icon>\n        </button>\n    </mat-toolbar>\n\n    <div mat-dialog-content fxLayout=\"column\">\n        <div fxLayout=\"row\" fxLayoutGap=\"8px\" fxLayout.xs=\"column\"  fxLayoutGap.xs=\"0\">\n            <mat-form-field fxFlex class=\"mat-block\">\n                <mat-label>Numero elementi</mat-label>\n                <input matInput formControlName=\"elementNumber\" type=\"number\" (change)=\"elementNumber()\" [(ngModel)]=\"myValue\">\n                    <mat-error *ngIf=\"addEntityFormGroup.get('attributes.elementNumber').hasError('pattern')\">\n                        Invalid integer value.\n                    </mat-error>\n                    <mat-hint>Default value: 100</mat-hint>\n            </mat-form-field>\n        </div>\n    </div>\n  \n    <div mat-dialog-actions fxLayout=\"row\" fxLayoutAlign=\"end center\">\n        <button mat-button color=\"primary\"\n                type=\"button\"\n                [disabled]=\"false\"\n                (click)=\"cancel()\" cdkFocusInitial>\n            Annulla\n        </button>\n        <button mat-button mat-raised-button color=\"primary\"\n                type=\"submit\"\n                [disabled]=\"false\"\n                (click)=\"download()\" cdkFocusInitial>\n            Scarica\n        </button>\n    </div>\n</form>",
+                "customCss" : "/*=======================================================================*/\n/*==========  There are two examples: for edit and add entity  ==========*/\n/*=======================================================================*/\n/*========================  Edit entity example  ========================*/\n/*=======================================================================*/\n/*\n.edit-entity-form .boolean-value-input {\n    padding-left: 5px;\n}\n\n.edit-entity-form .boolean-value-input .checkbox-label {\n    margin-bottom: 8px;\n    color: rgba(0,0,0,0.54);\n    font-size: 12px;\n}\n\n.relations-list .header {\n    padding-right: 5px;\n    padding-bottom: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .header .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n    font-size: 12px;\n    font-weight: 700;\n    color: rgba(0, 0, 0, .54);\n    white-space: nowrap;\n}\n\n.relations-list .mat-form-field-infix {\n    width: auto !important;\n}\n\n.relations-list .body {\n    padding-right: 5px;\n    padding-bottom: 15px;\n    padding-left: 5px;\n}\n\n.relations-list .body .row {\n    padding-top: 5px;\n}\n\n.relations-list .body .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .body .md-button {\n    margin: 0;\n}\n*/\n/*========================================================================*/\n/*=========================  Add entity example  =========================*/\n/*========================================================================*/\n/*\n.add-entity-form .boolean-value-input {\n    padding-left: 5px;\n}\n\n.add-entity-form .boolean-value-input .checkbox-label {\n    margin-bottom: 8px;\n    color: rgba(0,0,0,0.54);\n    font-size: 12px;\n}\n\n.relations-list .header {\n    padding-right: 5px;\n    padding-bottom: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .header .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n    font-size: 12px;\n    font-weight: 700;\n    color: rgba(0, 0, 0, .54);\n    white-space: nowrap;\n}\n\n.relations-list .mat-form-field-infix {\n    width: auto !important;\n}\n\n.relations-list .body {\n    padding-right: 5px;\n    padding-bottom: 15px;\n    padding-left: 5px;\n}\n\n.relations-list .body .row {\n    padding-top: 5px;\n}\n\n.relations-list .body .cell {\n    padding-right: 5px;\n    padding-left: 5px;\n}\n\n.relations-list .body .md-button {\n    margin: 0;\n}\n*/\n",
+                "customFunction" : "\nlet $injector = widgetContext.$scope.$injector;\n\nvar fileOutput=\"\";\nvar keys=[];\nvar starTs;\nvar endTs;\nvar dataKeysDevice=[];\nvar element=100;\n\nlet customDialog = $injector.get(widgetContext.servicesMap.get('customDialog'));\n\nlet assetService = $injector.get(widgetContext.servicesMap.get('assetService'));\nlet deviceService = $injector.get(widgetContext.servicesMap.get('deviceService'));\nlet attributeService = $injector.get(widgetContext.servicesMap.get('attributeService'));\nlet entityRelationService = $injector.get(widgetContext.servicesMap.get('entityRelationService'));\n\n\nopenAddEntityDialog();\n\nfunction openAddEntityDialog() {\n    customDialog.customDialog(htmlTemplate, AddEntityDialogController).subscribe();\n}\n\nfunction AddEntityDialogController(instance) {\n    let vm = instance;\n\n    vm.allowedEntityTypes = ['ASSET', 'DEVICE'];\n    vm.entitySearchDirection = {\n        from: \"FROM\",\n        to: \"TO\"\n    }\n\n    vm.dataKeyType = \"timeseries\"\n    \n    vm.addEntityFormGroup = vm.fb.group({\n        elementNumber: [null, [vm.validators.pattern(/^-?[0-9]+$/)]], \n        entityName: ['', [vm.validators.required]],\n      entityType: ['DEVICE'],\n      entityLabel: [null],\n      type: ['', [vm.validators.required]],\n      attributes: vm.fb.group({\n          latitude: [null],\n          longitude: [null],\n          address: [null],\n          owner: [null],\n          number: [null, [vm.validators.pattern(/^-?[0-9]+$/)]],\n          elementNumber: [null, [vm.validators.pattern(/^-?[0-9]+$/)]], \n          booleanValue: [null]\n      }),\n    });\n\n    vm.starTs=widgetContext.timeWindow.minTime;\n    vm.endTs=widgetContext.timeWindow.maxTime;\n    vm.numberRow=element;\n    vm.keys=widgetContext.datasources[0];\n\tvm.file=fileOutput;\n\t\n\tgetEntityInfo();\n\t\n\tfunction getEntityInfo() {\n\t    starTs=widgetContext.timeWindow.minTime;\n        endTs=widgetContext.timeWindow.maxTime;\n        var numberRow=element;\n        keys=widgetContext.datasources[0];\n        \n        for(let i=0; i<keys.dataKeys.length;i++){\n            let key=keys.dataKeys[i].name;\n            dataKeysDevice[i] = key\n        }\n    \n          widgetContext.rxjs.forkJoin([\n             \n        //     //getEntityTimeseries(entityId: EntityId, keys: Array<string>, startTs: number, endTs: number, limit: number, agg: Aggregation Type, interval: number, orderBy: Data Sort Order, useStrictDataTypes: boolean, config?: RequestConfig): Observable<Timeseries Data>\n        //     //export enum AggregationType {\n        //     //   MIN = 'MIN',\n        //     //   MAX = 'MAX',\n        //     //   AVG = 'AVG',\n        //     //   SUM = 'SUM',\n        //     //   COUNT = 'COUNT',\n        //     //   NONE = 'NONE'\n        //     // }\n            \n        //     // export enum DataSortOrder {\n        //     //     ASC = 'ASC',\n        //     //     DESC = 'DESC'\n        //     // }\n            //  attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element)\n            attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element, 'NONE', 0, 'ASC', false)\n          ]).subscribe(\n              function (data) {\n               \n               var parts = \"device;key; ts; value\\n\";\n\n                if(data.length > 0){\n                     for(let i=0; i<data.length;i++){\n                        let current=data[i];\n                        \n                      \n                         Object.keys(current).forEach( key => {\n                            current[key].forEach (element => {\n                                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\n                            })\n                        })\n                    \n                     }\n                }\n                fileOutput=parts;\n        \t\tvm.file=fileOutput;\n                    \n              }\n             );\n\t} \n\t\n    vm.elementNumber = function() {\n        if(vm.myValue && vm.myValue>0 ){\n            vm.numberRow=vm.myValue;\n        }else{\n            vm.numberRow=100;\n        }\n\t\t\n \t\tgetEntityInfoValue();\n    };\n    \n \tfunction getEntityInfoValue() {\n      \n        var starTs=vm.starTs;\n        var endTs=vm.endTs;\n        var keys=vm.keys;\n\t\tvar element=vm.numberRow;\t\t       \n\t    var dataKeysDevice=[];\n\n        for(let i=0; i<keys.dataKeys.length;i++){\n            let key=keys.dataKeys[i].name;\n            dataKeysDevice[i] = key\n        }  \n\n        \n          widgetContext.rxjs.forkJoin([\n             \n        //     //getEntityTimeseries(entityId: EntityId, keys: Array<string>, startTs: number, endTs: number, limit: number, agg: Aggregation Type, interval: number, orderBy: Data Sort Order, useStrictDataTypes: boolean, config?: RequestConfig): Observable<Timeseries Data>\n        //     //export enum AggregationType {\n        //     //   MIN = 'MIN',\n        //     //   MAX = 'MAX',\n        //     //   AVG = 'AVG',\n        //     //   SUM = 'SUM',\n        //     //   COUNT = 'COUNT',\n        //     //   NONE = 'NONE'\n        //     // }\n            \n        //     // export enum DataSortOrder {\n        //     //     ASC = 'ASC',\n        //     //     DESC = 'DESC'\n        //     // }\n             attributeService.getEntityTimeseries(entityId, dataKeysDevice, starTs, endTs, element)\n          ]).subscribe(\n              function (data) {\n                   var parts = \"device;key; ts; value\\n\";\n                    if(data.length > 0){\n                     for(let i=0; i<data.length;i++){\n                        let current=data[i];\n                        \n                      \n                         Object.keys(current).forEach( key => {\n                            current[key].forEach (element => {\n                                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\n                            })\n                        })\n                    \n                     }\n                }\n                    fileOutput=parts;\n            \t\tvm.file=fileOutput;\n             \n              }\n             );\n    \n    }\n    \n    vm.download=function() {\n       downloadFile('timeseries.csv', 'data:text/csv;charset=UTF-8,' + encodeURIComponent(fileOutput));\n   }\n   \n    function downloadFile(fileName, urlData) {\n        var aLink = document.createElement('a');\n        var evt = document.createEvent(\"HTMLEvents\");\n        evt.initEvent(\"click\");\n        aLink.download = fileName;\n        aLink.href = urlData;\n        aLink.dispatchEvent(evt);\n        aLink.click();\n        vm.dialogRef.close(null);\n    } \n    \n        vm.save = function() {\n        vm.addEntityFormGroup.markAsPristine();\n        widgetContext.rxjs.forkJoin([\n            \n        ]).subscribe(\n            function () {\n                vm.dialogRef.close(null);\n            }\n        );\n    };\n\n    vm.cancel = function() {\n        vm.dialogRef.close(null);\n    };\n}\n",
+                "customResources" : [ ],
+                "openInSeparateDialog" : false,
+                "openInPopover" : false,
+                "id" : "0336d4da-8018-df59-ebe0-b844a7d768b6"
+              } ]
+            },
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "displayTimewindow" : true
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "61bcdf3c-085d-6956-e656-89b6ca444ece"
+        }
+      },
+      "states" : {
+        "default" : {
+          "name" : "test download csv",
+          "root" : true,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "a1ea579b-44c2-d6b2-acdf-567bc64981b2" : {
+                  "sizeX" : 12,
+                  "sizeY" : 7,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "32f19514-be87-9262-534f-816200d8116d" : {
+                  "sizeX" : 14,
+                  "sizeY" : 7,
+                  "row" : 0,
+                  "col" : 12
+                },
+                "34222db6-fa18-3863-5603-1779047e99df" : {
+                  "sizeX" : 8,
+                  "sizeY" : 6,
+                  "row" : 7,
+                  "col" : 0
+                },
+                "61bcdf3c-085d-6956-e656-89b6ca444ece" : {
+                  "sizeX" : 8,
+                  "sizeY" : 6,
+                  "row" : 7,
+                  "col" : 8
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "columns" : 24,
+                "margin" : 10,
+                "backgroundSizeMode" : "100%"
+              }
+            }
+          }
+        }
+      },
+      "entityAliases" : {
+        "3c851471-fb8f-8bf6-bca0-c601d723f176" : {
+          "id" : "3c851471-fb8f-8bf6-bca0-c601d723f176",
+          "alias" : "device",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "56926e10-6fee-11ed-a76d-9955dd563d2d"
+            }
+          }
+        }
+      },
+      "filters" : { },
+      "timewindow" : {
+        "hideInterval" : false,
+        "hideAggregation" : false,
+        "hideAggInterval" : false,
+        "hideTimezone" : false,
+        "selectedTab" : 0,
+        "realtime" : {
+          "realtimeType" : 0,
+          "timewindowMs" : 86400000,
+          "quickInterval" : "CURRENT_DAY",
+          "interval" : 300000
+        },
+        "aggregation" : {
+          "type" : "AVG",
+          "limit" : 25000
+        }
+      },
+      "settings" : {
+        "stateControllerId" : "entity",
+        "showTitle" : false,
+        "showDashboardsSelect" : true,
+        "showEntitiesSelect" : true,
+        "showDashboardTimewindow" : true,
+        "showDashboardExport" : true,
+        "toolbarAlwaysOpen" : true
+      }
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "32e62320-7c7e-11ed-a76d-9955dd563d2d"
+    },
+    "image" : null,
+    "mobileHide" : false,
+    "mobileOrder" : null,
+    "name" : "test download csv",
+    "title" : "test download csv"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

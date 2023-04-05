@@ -1,0 +1,73 @@
+{
+  "entityType" : "WIDGETS_BUNDLE",
+  "entity" : {
+    "alias" : "new_form_rpc",
+    "description" : null,
+    "externalId" : null,
+    "id" : {
+      "entityType" : "WIDGETS_BUNDLE",
+      "id" : "c649c230-310a-11ed-84c7-a996325bb5fa"
+    },
+    "image" : null,
+    "title" : "New FORM RPC"
+  },
+  "widgets" : [ {
+    "alias" : "Dev_My_rpc",
+    "name" : "Dev_My_RPC",
+    "image" : null,
+    "description" : null,
+    "descriptor" : {
+      "type" : "rpc",
+      "sizeX" : 7,
+      "sizeY" : 5.5,
+      "resources" : [ ],
+      "templateHtml" : "<form #rpcForm=\"ngForm\" (submit)=\"sendCommand()\">\n      <div class=\"mat-content mat-padding\" fxLayout=\"column\">\n        <mat-form-field class=\"mat-block\">\n          <mat-label>RPC method</mat-label>\n          <input matInput required name=\"rpcMethod\"  #rpcMethodField=\"ngModel\" [(ngModel)]=\"rpcMethod\"/>\n          <mat-error *ngIf=\"rpcMethodField.hasError('required')\">\n            RPC method name is required.\n          </mat-error>\n        </mat-form-field>\n        \n        <mat-form-field class=\"mat-block\">\n          <mat-label>RPC params</mat-label>\n          <input matInput required name=\"rpcParams\" id=\"myRpcInput\" #rpcParamsField=\"ngModel\" [(ngModel)]=\"rpcParams\"/>\n\n          <mat-error *ngIf=\"rpcParamsField.hasError('required')\">\n            RPC params is required.\n          </mat-error>\n        </mat-form-field>\n        \n        <button [disabled]=\"rpcForm.invalid || !rpcForm.dirty\" mat-raised-button color=\"primary\" type=\"submit\" >\n          Send RPC command\n        </button>\n        <div>\n          <label>RPC command response</label>\n          <div style=\"width: 100%; height: 100px; border: solid 2px gray\" [innerHTML]=\"rpcCommandResponse\">\n          </div>\n        </div>\n      </div>\n    </form>\n    <label for=\"pet-select\">Choose a pet:</label>\n\n<select name=\"pets\" id=\"pet-select\" onchange=\"window.myFunction()\">\n    <option value=\"\">--Please choose an option--</option>\n    <option value=\"AT+OUT=1\">ON RELE'</option>\n    <option value=\"cat\">Cat</option>\n    <option value=\"hamster\">Hamster</option>\n    <option value=\"parrot\">Parrot</option>\n    <option value=\"spider\">Spider</option>\n    <option value=\"goldfish\">Goldfish</option>\n</select>\n<br><br>\n\n\n\n",
+      "templateCss" : "",
+      "controllerScript" : "window.myFunction = function(){\n     var selectValue = $(\"#pet-select\").val()\n     debugger;\n     $(\"#myRpcInput\").val(selectValue)\n}\n\n\nself.onInit = function() {\n   \n    self.ctx.$scope.sendCommand = function() {\n        var rpcMethod = self.ctx.$scope.rpcMethod;\n        var rpcParams = self.ctx.$scope.rpcParams;\n        var timeout = self.ctx.settings.requestTimeout;\n        var oneWayElseTwoWay = self.ctx.settings.oneWayElseTwoWay ? true : false;\n\n        var commandObservable;\n        if (oneWayElseTwoWay) {\n            commandObservable = self.ctx.controlApi.sendOneWayCommand(rpcMethod, rpcParams, timeout);\n        } else {\n            commandObservable = self.ctx.controlApi.sendTwoWayCommand(rpcMethod, rpcParams, timeout);\n        }\n        commandObservable.subscribe(\n            function (response) {\n                if (oneWayElseTwoWay) {\n                    self.ctx.$scope.rpcCommandResponse = \"Command was successfully received by device.<br> No response body because of one way command mode.\";\n                } else {\n                    self.ctx.$scope.rpcCommandResponse = \"Response from device:<br>\";                    \n                    self.ctx.$scope.rpcCommandResponse += JSON.stringify(response, undefined, 2);\n                }\n                self.ctx.detectChanges();\n            },\n            function (rejection) {\n                self.ctx.$scope.rpcCommandResponse = \"Failed to send command to the device:<br>\"\n                self.ctx.$scope.rpcCommandResponse += \"Status: \" + rejection.status + \"<br>\";\n                self.ctx.$scope.rpcCommandResponse += \"Status text: '\" + rejection.statusText + \"'\";\n                self.ctx.detectChanges();\n            }\n            \n        );\n    }\n    \n}",
+      "settingsSchema" : "{\n    \"schema\": {\n        \"type\": \"object\",\n        \"title\": \"Settings\",\n        \"properties\": {\n            \"oneWayElseTwoWay\": {\n                \"title\": \"Is One Way Command\",\n                \"type\": \"boolean\",\n                \"default\": true\n            },\n            \"requestTimeout\": {\n                \"title\": \"RPC request timeout\",\n                \"type\": \"number\",\n                \"default\": 500\n            }\n        },\n        \"required\": []\n    },\n    \"form\": [\n        \"oneWayElseTwoWay\",\n        \"requestTimeout\"\n    ]\n} ",
+      "dataKeySettingsSchema" : "{}\n",
+      "defaultConfig" : "{\"targetDeviceAliases\":[],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"0px\",\"settings\":{\"parseGpioStatusFunction\":\"return body[pin] === true;\",\"gpioStatusChangeRequest\":{\"method\":\"setGpioStatus\",\"paramsBody\":\"{\\n   \\\"pin\\\": \\\"{$pin}\\\",\\n   \\\"enabled\\\": \\\"{$enabled}\\\"\\n}\"},\"requestTimeout\":500,\"switchPanelBackgroundColor\":\"#b71c1c\",\"gpioStatusRequest\":{\"method\":\"getGpioStatus\",\"paramsBody\":\"{}\"},\"gpioList\":[{\"pin\":1,\"label\":\"GPIO 1\",\"row\":0,\"col\":0,\"_uniqueKey\":0},{\"pin\":2,\"label\":\"GPIO 2\",\"row\":0,\"col\":1,\"_uniqueKey\":1},{\"pin\":3,\"label\":\"GPIO 3\",\"row\":1,\"col\":0,\"_uniqueKey\":2}]},\"title\":\"Dev_My_RPC\"}"
+    },
+    "bundleAlias" : "new_form_rpc",
+    "createdTime" : 1679562781167,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "e8ffc7f0-c95a-11ed-a76d-9955dd563d2d"
+    },
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "64ee8810-2de8-11ed-9397-cd2dc17441ed"
+    }
+  }, {
+    "alias" : "my_rpc_test",
+    "name" : "My_RPC_Test",
+    "image" : null,
+    "description" : null,
+    "descriptor" : {
+      "type" : "rpc",
+      "sizeX" : 7,
+      "sizeY" : 7,
+      "resources" : [ ],
+      "templateHtml" : "<form #rpcForm=\"ngForm\" (submit)=\"sendCommand()\">\n      <div class=\"mat-content mat-padding\" fxLayout=\"column\">\n        <mat-form-field class=\"mat-block\">\n          <mat-label>RPC method</mat-label>\n          <input matInput required name=\"rpcMethod\" #rpcMethodField=\"ngModel\" [(ngModel)]=\"rpcMethod\"/>\n          <mat-error *ngIf=\"rpcMethodField.hasError('required')\">\n            RPC method name is required.\n          </mat-error>\n        </mat-form-field>\n        <mat-form-field class=\"mat-block\">\n          <mat-label>RPC params</mat-label>\n          <input matInput required name=\"rpcParams\" #rpcParamsField=\"ngModel\" [(ngModel)]=\"rpcParams\"/>\n          <mat-error *ngIf=\"rpcParamsField.hasError('required')\">\n            RPC params is required.\n          </mat-error>\n        </mat-form-field>\n        <button [disabled]=\"rpcForm.invalid || !rpcForm.dirty\" mat-raised-button color=\"primary\" type=\"submit\" >\n          Send RPC command\n        </button>\n        <div>\n          <label>RPC command response</label>\n          <div style=\"width: 100%; height: 100px; border: solid 2px gray\" [innerHTML]=\"rpcCommandResponse\">\n          </div>\n        </div>\n      </div>\n    </form>",
+      "templateCss" : "",
+      "controllerScript" : "self.onInit = function() {\n    \n    self.ctx.$scope.sendCommand = function() {\n        var rpcMethod = self.ctx.$scope.rpcMethod;\n        var rpcParams = self.ctx.$scope.rpcParams;\n        var timeout = self.ctx.settings.requestTimeout;\n        var oneWayElseTwoWay = self.ctx.settings.oneWayElseTwoWay ? true : false;\n\n        var commandObservable;\n        if (oneWayElseTwoWay) {\n            commandObservable = self.ctx.controlApi.sendOneWayCommand(rpcMethod, rpcParams, timeout);\n        } else {\n            commandObservable = self.ctx.controlApi.sendTwoWayCommand(rpcMethod, rpcParams, timeout);\n        }\n        commandObservable.subscribe(\n            function (response) {\n                if (oneWayElseTwoWay) {\n                    self.ctx.$scope.rpcCommandResponse = \"Command was successfully received by device.<br> No response body because of one way command mode.\";\n                } else {\n                    self.ctx.$scope.rpcCommandResponse = \"Response from device:<br>\";                    \n                    self.ctx.$scope.rpcCommandResponse += JSON.stringify(response, undefined, 2);\n                }\n                self.ctx.detectChanges();\n            },\n            function (rejection) {\n                self.ctx.$scope.rpcCommandResponse = \"Failed to send command to the device:<br>\"\n                self.ctx.$scope.rpcCommandResponse += \"Status: \" + rejection.status + \"<br>\";\n                self.ctx.$scope.rpcCommandResponse += \"Status text: '\" + rejection.statusText + \"'\";\n                self.ctx.detectChanges();\n            }\n            \n        );\n    }\n    \n}",
+      "settingsSchema" : "{\n    \"schema\": {\n        \"type\": \"object\",\n        \"title\": \"Settings\",\n        \"properties\": {\n            \"oneWayElseTwoWay\": {\n                \"title\": \"Is One Way Command\",\n                \"type\": \"boolean\",\n                \"default\": true\n            },\n            \"requestTimeout\": {\n                \"title\": \"RPC request timeout\",\n                \"type\": \"number\",\n                \"default\": 500\n            }\n        },\n        \"required\": []\n    },\n    \"form\": [\n        \"oneWayElseTwoWay\",\n        \"requestTimeout\"\n    ]\n} ",
+      "dataKeySettingsSchema" : "{}\n",
+      "defaultConfig" : "{\"targetDeviceAliases\":[],\"showTitle\":true,\"backgroundColor\":\"#fff\",\"color\":\"rgba(0, 0, 0, 0.87)\",\"padding\":\"0px\",\"settings\":{\"parseGpioStatusFunction\":\"return body[pin] === true;\",\"gpioStatusChangeRequest\":{\"method\":\"setGpioStatus\",\"paramsBody\":\"{\\n   \\\"pin\\\": \\\"{$pin}\\\",\\n   \\\"enabled\\\": \\\"{$enabled}\\\"\\n}\"},\"requestTimeout\":500,\"switchPanelBackgroundColor\":\"#b71c1c\",\"gpioStatusRequest\":{\"method\":\"getGpioStatus\",\"paramsBody\":\"{}\"},\"gpioList\":[{\"pin\":1,\"label\":\"GPIO 1\",\"row\":0,\"col\":0,\"_uniqueKey\":0},{\"pin\":2,\"label\":\"GPIO 2\",\"row\":0,\"col\":1,\"_uniqueKey\":1},{\"pin\":3,\"label\":\"GPIO 3\",\"row\":1,\"col\":0,\"_uniqueKey\":2}]},\"title\":\"My_RPC_Test\"}"
+    },
+    "bundleAlias" : "new_form_rpc",
+    "createdTime" : 1662815786827,
+    "id" : {
+      "entityType" : "WIDGET_TYPE",
+      "id" : "c68321b0-310a-11ed-84c7-a996325bb5fa"
+    },
+    "tenantId" : {
+      "entityType" : "TENANT",
+      "id" : "64ee8810-2de8-11ed-9397-cd2dc17441ed"
+    }
+  } ],
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "entityType" : "CUSTOMER",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "Prova",
+      "homeDashboardId" : null,
+      "homeDashboardHideToolbar" : true
+    },
+    "address" : "via andrea serrao",
+    "address2" : "71",
+    "city" : null,
+    "country" : null,
+    "email" : "grails.iaco@gmail.com",
+    "externalId" : null,
+    "id" : {
+      "entityType" : "CUSTOMER",
+      "id" : "1b9127b0-66a8-11ed-a76d-9955dd563d2d"
+    },
+    "name" : "Prova",
+    "phone" : null,
+    "state" : "Matera",
+    "title" : "Prova",
+    "zip" : "75100"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -1,0 +1,106 @@
+{
+  "entityType" : "RULE_CHAIN",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : "Parsing del meter Eastron Vx3,Ix3,Px3"
+    },
+    "configuration" : null,
+    "debugMode" : false,
+    "externalId" : null,
+    "firstRuleNodeId" : {
+      "entityType" : "RULE_NODE",
+      "id" : "31a27820-9820-11ed-a76d-9955dd563d2d"
+    },
+    "id" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "3191d650-9820-11ed-a76d-9955dd563d2d"
+    },
+    "name" : "Eastronparse",
+    "root" : false,
+    "type" : "CORE"
+  },
+  "metaData" : {
+    "connections" : [ {
+      "fromIndex" : 0,
+      "toIndex" : 2,
+      "type" : "Failure"
+    }, {
+      "fromIndex" : 0,
+      "toIndex" : 2,
+      "type" : "Success"
+    }, {
+      "fromIndex" : 1,
+      "toIndex" : 0,
+      "type" : "Success"
+    } ],
+    "firstNodeIndex" : 1,
+    "nodes" : [ {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 546,
+        "layoutY" : 265
+      },
+      "configuration" : {
+        "jsScript" : "/*Decodifica MODBUS da ICON della stringa  presente nel campo conn della risposta json\nIN row=conn\nOutput json output_msg\nEsempi :\n1- row=\"010404435ca4a2d56b\"; //risposta al singolo registro V\n{\"MSG\":\"010404435ca4a2d56b\"}\noutput_msg={\"Nreg\":1,\"Reg1\":220.64}\n2- row=\"01042443606B170000000000000000000000000000000000000000000000000000000000000000F07D\";//risposta a 9 registri\noutput_msg ={\"Nreg\":9,\"Reg1\":224.42,\"Reg2\":0,\"Reg3\":0,\"Reg4\":0,\"Reg5\":0,\"Reg6\":0,\"Reg7\":0,\"Reg8\":0,\"Reg9\":0}\nRichiesta come punto 2 schedulate dal miniGTW com AT+MSG1=\n3-row=\"MSG1:01042443606B170000000000000000000000000000000000000000000000000000000000000000F07D\";//risposta a 9 registri\noutput_msg={\"Nreg\":9,\"V1\":224.42,\"V2\":0,\"V3\":0,\"I1\":0,\"I2\":0,\"I3\":0,\"P1\":0,\"P2\":0,\"P3\":0}\n\nEsempio richiesta \n row=\"MSG1:01041842910EF40000000000000000000000000000000000000000AF37\";\n output_msg={\"Nreg\":3,\"V\":75.3922,\"I\":0.0954934,\"PA\":32.705}\n row=\"MSG2:010408000000003f80000029f1\"\n output_msg={\"Nreg\":2,\"PR\":-9.49258,\"PF\":0.960491}\n row=\"MSG3:0104083E74BC6A000000009067\";\n output_msg={\"Nreg\":2,\"TotEnA\":0.239,\"TotEnR\":0} \n \n \"MSG\": \"MSG1:01041842910EF40000000000000000000000000000000000000000AF37\"\n \"MSG\": \"MSG2:010408000000003f80000029f1\"\n \"MSG\": \"MSG3:0104083E74BC6A000000009067\"\n*/\n\n\n//Remapping dei messaggi MSGX\n//\"0\":Non usato\n//\"1\":V,I,P\n//\"2\":Va,Vr,PF\n//\"3\":Ea,Er\n//                 [\"0\",\"1\",\"2\",\"3\",\"4\",\"5\",\"6\",\"7\"];\nvar mapping_msg_id=[\"0\",\"1\",\"2\",\"3\",\"1\",\"2\",\"3\",\"3\"];\n\nvar row;//stringa in ingresso ed un json in uscita. row in ingresso e msg in usctita\n//msg.MSG=JSON.stringify(msg.MSG);\n//var monofase = 1;\nvar num_phase=metadata.shared_n_phase;\n//var test = {\"4C75256BF7E8_0010_01\": [{\"MSG\": \"MSG2:01042440F4E81C0000000000000000C0F4DFB300000000000000003F8000003F8000003F800000129E;,10,0010,-108;\"}]};\nvar output_msg=msg;//output\n//msg.MSG = JSON.stringify(msg.MSG);\n//var test = JSON.stringify(msg.MSG);\n\n//msg.MSG= msg.replace(/\\n|\\r/g, \"\");\n\nvar test=JSON.parse(JSON.stringify(msg), function(key, value){\nif (key==\"MSG\"){\n    myMSG = value;\nif (myMSG.startsWith(\"MSG\"))\n{\n  myMSG=myMSG.split(';');\n  myMSG=myMSG[0];\n  //console.log(myMSG);\n}\nelse{\nvar prova = myMSG.search(\"MSG\");\nvar prova1 = myMSG.search(\":\");\n//console.log(prova);\n if ((prova1-prova)==4) \n {\n \tmyMSG =myMSG.substr((prova1-prova+1),(myMSG.length-1));//Elimino ; stringa\n  //console.log(myMSG)\n }\n    myMSG=myMSG.split(';');\n    myMSG=myMSG[0];\n//console.log(myMSG);\n    }\n    }\n});\nmyMSG=myMSG + \";\";\n\n if (myMSG !== undefined){\n// if (msg.MSG !== undefined){\n// if (1){\n     \n/*var test=JSON.parse(msg.MSG, function(key, value){\nif (key==\"MSG\"){\n    myMSG = value;\n    myMSG = myMSG.split(';');\n    myMSG = myMSG[0];\n    }\n});\nmyMSG=myMSG + \";\";*/\nrow=myMSG;     \nrow = row.replace(/\\n|\\r/g, \"\");\n//     temp=msg.MSG.split(';');\n//     msg.MSG=temp[0]+\";\";//Nel caso vi fosse il pacchetto LoRa filtriamo i dati GA ADD  ed Rssi\n//     row=msg.MSG;\n\n//      row=msg.MSG+';';//bug da risolvere con lora che non mette il ; in coda\noutput_msg.MSG=row;\n//output_msg.debug=monofase;\n//output_msg={\"Nreg\":1,\"Reg1\":220.64}\nvar msg_id=checkGTWmsg_id(row);//Controllo della tipologia messaggio Master:Cloud/gtw\n\nmsg_id=mapping_msg_id[msg_id];\n\nvar float_reg_parsed=[];//vettore dei registri decodificati float \n// if (row !== undefined){\n GetRegParsed(row) ;  \n //JSON response\nswitch(msg_id) {\n  case \"0\"://json Registri generici\n    output_msg.V1=float_reg_parsed[0];//output_msg.Reg1=float_reg_parsed[0]; \n    output_msg.Reg2=float_reg_parsed[1]; output_msg.Reg3=float_reg_parsed[2];\n    output_msg.I1=float_reg_parsed[3];//output_msg.Reg4=float_reg_parsed[3]; \n    output_msg.Reg5=float_reg_parsed[4]; output_msg.Reg6=float_reg_parsed[5];\n    output_msg.P1=float_reg_parsed[6]; //output_msg.Reg7=float_reg_parsed[6];\n    output_msg.Reg8=float_reg_parsed[7]; output_msg.Reg9=float_reg_parsed[8];\n    \n//    output_msg=DecGTWmsg(row);  //decodifica embeddedd message\n    break;\n/*  case \"1\"://json Registri key V1,V2,V3,I1,I2,I3,P1,P2,P3\n    output_msg.V1=float_reg_parsed[0]; output_msg.V2=float_reg_parsed[1]; output_msg.V3=float_reg_parsed[2];//tensione sulle tre fasi\n    output_msg.I1=float_reg_parsed[3]; output_msg.I2=float_reg_parsed[4]; output_msg.I3=float_reg_parsed[5];//Corrente sulle tre fasi\n    output_msg.P1=float_reg_parsed[6]; output_msg.P2=float_reg_parsed[7]; output_msg.P3=float_reg_parsed[8];//Potenza sulle tre fasi\n    break;*/\n  case \"1\":\n  if (num_phase == 1)\n  { \n    //json Registri key V,I,P\n    output_msg.V=float_reg_parsed[0]; //tensione \n    output_msg.I=float_reg_parsed[3]; //Corrente \n    output_msg.P=float_reg_parsed[6]; //Potenza Attiva \n  }\n  else if (num_phase == 3)\n  { \n    //json Registri key V1,V2,V3,I1,I2,I3,P1,P2,P3\n    output_msg.V1=float_reg_parsed[0]; output_msg.V2=float_reg_parsed[1]; output_msg.V3=float_reg_parsed[2];//tensione sulle tre fasi\n    output_msg.I1=float_reg_parsed[3]; output_msg.I2=float_reg_parsed[4]; output_msg.I3=float_reg_parsed[5];//Corrente sulle tre fasi\n    output_msg.P1=float_reg_parsed[6]; output_msg.P2=float_reg_parsed[7]; output_msg.P3=float_reg_parsed[8];//Potenza Attiva sulle tre fasi\n    output_msg.Ptot=Math.abs(output_msg.P1)+Math.abs(output_msg.P2)+Math.abs(output_msg.P3);\n  }\n  else if (num_phase == 'Selleri') //per Selleri\n  { //json Registri key V,I,PA\n    //Selleri\n    output_msg.V=float_reg_parsed[0]; output_msg.I=float_reg_parsed[2]; output_msg.PA=float_reg_parsed[5];//tensione e corrente media sulle tre fasi, Potenza Attiva\n  }\n    break;\n  case \"2\":\n  if (num_phase == 1)\n  {\n    //json Registri key VA,VAr,PF\n    output_msg.VA=float_reg_parsed[0]; //Potenza Apparente \n    output_msg.VAr=float_reg_parsed[3]; //Potenza Reattiva  \n    output_msg.PF=float_reg_parsed[6]; //Power Factor \n  }\n  else if (num_phase == 3)\n  {\n    //json Registri key VA1,VA2,VA3,VAr1,VAr2,VAr3,PF1,PF2,PF3\n    output_msg.VA1=float_reg_parsed[0]; output_msg.VA2=float_reg_parsed[1]; output_msg.VA3=float_reg_parsed[2];//Potenza Apparente sulle tre fasi\n    output_msg.VAr1=float_reg_parsed[3]; output_msg.VAr2=float_reg_parsed[4]; output_msg.VAr3=float_reg_parsed[5];//Potenza Reattiva  sulle tre fasi\n    output_msg.PF1=float_reg_parsed[6]; output_msg.PF2=float_reg_parsed[7]; output_msg.PF3=float_reg_parsed[8];//Power Factor sulle tre fasi\n  }\n  else if (num_phase == 'Selleri') //Selleri\n  {\n    //json Registri key PR,PF\n    //Selleri\n    output_msg.PR=float_reg_parsed[0]; output_msg.PF=float_reg_parsed[1];// Potenza Reattiva, PowerFactor\n  }\n    break;\n  case \"3\"://json Registri key TotEnA,TotEnR\n    output_msg.TotEnA=float_reg_parsed[0]; output_msg.TotEnR=float_reg_parsed[1];//energia attiva totale, energia reattiva totale\n    break;\n  default:\n    // code block\n}\n//JSON response\n//console.log(JSON.stringify(output_msg));   \n}\nreturn {msg: output_msg, metadata: metadata, msgType: msgType};\n\nfunction DecGTWmsg(DecGtw_msg_String){\nvar local_output={};\nvar telemetry = new RegExp(\"telemetry=\");\nvar telemetryH2O = new RegExp(\"telemetryH2O=\");\nvar evb = new RegExp(\"EVB\");\nvar Telemetry_arr; //telemetry splitted\nswitch (true) {\n    case telemetry.test(DecGtw_msg_String):\n\t\t\t//console.log(\"telemetry\");\n\t\t\tDecGtw_msg_String = DecGtw_msg_String.replace(telemetry, \"\").substr(1, DecGtw_msg_String.length - 1);\n\t\t\tTelemetry_arr = DecGtw_msg_String.split(',');\n\t\t   // console.log(Telemetry);\n\t\t\t  // console.log(\"len1 \"+ testtel);\n\t\t   local_output.timestamp=Telemetry_arr[0]; \n       local_output.temperature=Telemetry_arr[1];   \n       local_output.humidity=Telemetry_arr[2]; \n       local_output.in_state=Telemetry_arr[3];\n\t\t   local_output.out_state=Telemetry_arr[4];       \n       local_output.current=Telemetry_arr[5];     \n       local_output.Batt=Telemetry_arr[6];    \n       local_output.ax=Telemetry_arr[7];\n\t   local_output.ay=Telemetry_arr[8];          \n       local_output.az=Telemetry_arr[9];          \n       local_output.sc_pci=Telemetry_arr[10];\n       local_output.sc_ecl=Telemetry_arr[11]; \n       local_output.sc_rssi=Telemetry_arr[12];\n        break;\n    case telemetryH2O.test(DecGtw_msg_String):\n            //console.log(\"telemetryH2O\");\n          DecGtw_msg_String = DecGtw_msg_String.replace(telemetry, \"\").substr(0, DecGtw_msg_String.length - 1);\n           Telemetry_arr = DecGtw_msg_String.split(',');\n     // console.log(Telemetry);\n      //Timestamp,IT,DF,RM,IF,dummy,ECL;\n      local_output.timestamp=Telemetry_arr[0]; local_output.IT=Telemetry_arr[1];       local_output.DF=Telemetry_arr[2];  local_output.RM=Telemetry_arr[3];\n      local_output.IM=Telemetry_arr[4];        local_output.rssi=Telemetry_arr[5];     local_output.ECL=Telemetry_arr[6];\n        break;\n    case evb.test(DecGtw_msg_String):\n         //console.log(\"evb\");\n         DecGtw_msg_String = DecGtw_msg_String.replace(telemetry, \"\").substr(0, DecGtw_msg_String.length - 1);\n         Telemetry_arr = DecGtw_msg_String.split(':');\n\t\t\t if (Telemetry_arr[1]===\"1\") Telemetry_arr[1]=\" open\";\n\t\t\t if (Telemetry_arr[1]===\"0\") Telemetry_arr[1]=\" close\";\n         local_output.Cmd=Telemetry_arr[0]+Telemetry_arr[1];\n        break;\n        default:\n}\n//console.log(local_output);\nreturn local_output;\n}\n\n//var strtosearch='MODB:';\n//Restituisce l'id messaggio se stimolato dal minigateway master modbus\nfunction checkGTWmsg_id(Modbus_String){\n var strtosearch='MSGX:';//Stringa per identificata l'ID=X della richiesta impostatate sul device GTW_NBIoT\n var p = row.search(\"MODB\");\n var n = row.search(\"MSG\");\n var m = row.search(\":\");\n var local_msg_id=\"0\";\n   if (((m-n)==4) || ((m-p)==4)){\n       row =row.substr(0,(row.length-1));//Elimino ; stringa\n       if(n===0)  {local_msg_id=row.substr(3,1);} //Contiene l'identificativo della richiesta utilizzata per identificare la grandezza richiesta\n   row =row.substr((m+1),row.length);//Elimino dalla stringa l'header relativo al comando\n  } \n//  else local_msg_id=\"0\";\nvar testodd = row.length % 2;// 'Controllo che la stringa sia pari \n  if (testodd===1) row='0'+row;\nreturn local_msg_id;\n }\n \n function GetRegParsed(Modbus_String){\n     //Modbus parameter\nvar modbus_addr =1;//indirizzo da filtrare\nvar recived_add;\nvar lenReg=4;//lunghezza in bytes della risposta  (registro richiesto) dipende dalla chiamata \nvar Nreg=0;//\nrecived_add=dataConverter(row,0,2,0);//Estrazione del Modbus address dalla risposta\n//output_msg.add = recived_add;   \n //output_msg.fnc = dataConverter(row,2,2,0);\nvar len_responce= dataConverter(row,4,2,0);//Estrazione Modbus response len bytes\n//output_msg.len = len_responce;\n//    if((recived_add===modbus_addr) && (len_responce >2) && (((len_responce+5)*2)===row.length)){\n    if((len_responce >2) && (((len_responce+5)*2)===row.length)){\n        Nreg=len_responce/lenReg;//Numero registri da convertire\n        //output_msg.Nreg=Nreg;\n        for(var j=0;j<Nreg;j++){\n            var point2Reg=6+j*8;\n            float_reg_parsed[j]=dataConverter(row,point2Reg,8,1);\n        }\n\n}\n    \n     \n }\n\n function dataConverter(decoded,byteIdxFrom,byteIdxTo,type){\n//var bytes=decoded.substr(byteIdxFrom,byteIdxTo);\n\nvar val=0;\nif (type===0){//Coversione in integer\n    val=parseInt(decoded.substr(byteIdxFrom,byteIdxTo),16);\n}\nif (type==1){//Conversione in float\n val=parseInt(decoded.substr(byteIdxFrom,byteIdxTo),16); \n val=hex2float(val);\n val=Math.round(val*100)/100;\n}\n\nreturn val;\n}\n\nfunction hex2float(num) {\n    var sign = (num & 0x80000000) ? -1 : 1;\n    var exponent = ((num >> 23) & 0xff) - 127;\n    var mantissa = 1 + ((num & 0x7fffff) / 0x7fffff);\n    return sign * mantissa * Math.pow(2, exponent);\n}\n\nfunction crctest(s) {\n var crcRX= parseInt(s.substr(s.length-4,s.length),16);\n var crccalc=crc16(s.substr(0,s.length-4));\n \n //var crccalc=crc16(row);\n//    console.log(\" crcRX:\"+ crcRX );  \n//     console.log(\"function crccalc:\"+ crccalc);  \nif (crcRX == crccalc){\n//console.log(\"function test ok:\" );  \nreturn 1;\n}else   return 0;\n}\n\nfunction crc16(s) {\n    var crc = 0xFFFF;\n    var j, i;\n\n var crcTable = [\n0X0000, 0XC0C1, 0XC181, 0X0140, 0XC301, 0X03C0, 0X0280, 0XC241,\n0XC601, 0X06C0, 0X0780, 0XC741, 0X0500, 0XC5C1, 0XC481, 0X0440,\n0XCC01, 0X0CC0, 0X0D80, 0XCD41, 0X0F00, 0XCFC1, 0XCE81, 0X0E40,\n0X0A00, 0XCAC1, 0XCB81, 0X0B40, 0XC901, 0X09C0, 0X0880, 0XC841,\n0XD801, 0X18C0, 0X1980, 0XD941, 0X1B00, 0XDBC1, 0XDA81, 0X1A40,\n0X1E00, 0XDEC1, 0XDF81, 0X1F40, 0XDD01, 0X1DC0, 0X1C80, 0XDC41,\n0X1400, 0XD4C1, 0XD581, 0X1540, 0XD701, 0X17C0, 0X1680, 0XD641,\n0XD201, 0X12C0, 0X1380, 0XD341, 0X1100, 0XD1C1, 0XD081, 0X1040,\n0XF001, 0X30C0, 0X3180, 0XF141, 0X3300, 0XF3C1, 0XF281, 0X3240,\n0X3600, 0XF6C1, 0XF781, 0X3740, 0XF501, 0X35C0, 0X3480, 0XF441,\n0X3C00, 0XFCC1, 0XFD81, 0X3D40, 0XFF01, 0X3FC0, 0X3E80, 0XFE41,\n0XFA01, 0X3AC0, 0X3B80, 0XFB41, 0X3900, 0XF9C1, 0XF881, 0X3840,\n0X2800, 0XE8C1, 0XE981, 0X2940, 0XEB01, 0X2BC0, 0X2A80, 0XEA41,\n0XEE01, 0X2EC0, 0X2F80, 0XEF41, 0X2D00, 0XEDC1, 0XEC81, 0X2C40,\n0XE401, 0X24C0, 0X2580, 0XE541, 0X2700, 0XE7C1, 0XE681, 0X2640,\n0X2200, 0XE2C1, 0XE381, 0X2340, 0XE101, 0X21C0, 0X2080, 0XE041,\n0XA001, 0X60C0, 0X6180, 0XA141, 0X6300, 0XA3C1, 0XA281, 0X6240,\n0X6600, 0XA6C1, 0XA781, 0X6740, 0XA501, 0X65C0, 0X6480, 0XA441,\n0X6C00, 0XACC1, 0XAD81, 0X6D40, 0XAF01, 0X6FC0, 0X6E80, 0XAE41,\n0XAA01, 0X6AC0, 0X6B80, 0XAB41, 0X6900, 0XA9C1, 0XA881, 0X6840,\n0X7800, 0XB8C1, 0XB981, 0X7940, 0XBB01, 0X7BC0, 0X7A80, 0XBA41,\n0XBE01, 0X7EC0, 0X7F80, 0XBF41, 0X7D00, 0XBDC1, 0XBC81, 0X7C40,\n0XB401, 0X74C0, 0X7580, 0XB541, 0X7700, 0XB7C1, 0XB681, 0X7640,\n0X7200, 0XB2C1, 0XB381, 0X7340, 0XB101, 0X71C0, 0X7080, 0XB041,\n0X5000, 0X90C1, 0X9181, 0X5140, 0X9301, 0X53C0, 0X5280, 0X9241,\n0X9601, 0X56C0, 0X5780, 0X9741, 0X5500, 0X95C1, 0X9481, 0X5440,\n0X9C01, 0X5CC0, 0X5D80, 0X9D41, 0X5F00, 0X9FC1, 0X9E81, 0X5E40,\n0X5A00, 0X9AC1, 0X9B81, 0X5B40, 0X9901, 0X59C0, 0X5880, 0X9841,\n0X8801, 0X48C0, 0X4980, 0X8941, 0X4B00, 0X8BC1, 0X8A81, 0X4A40,\n0X4E00, 0X8EC1, 0X8F81, 0X4F40, 0X8D01, 0X4DC0, 0X4C80, 0X8C41,\n0X4400, 0X84C1, 0X8581, 0X4540, 0X8701, 0X47C0, 0X4680, 0X8641,\n0X8201, 0X42C0, 0X4380, 0X8341, 0X4100, 0X81C1, 0X8081, 0X4040];\n\n\n // console.log(\"s.length1:\"+s.length );\n\n    for (i = 0; i < s.length/2; i++) {\n var k = i*2;\n        //c = s.charCodeAt(i);\n        //c = s.charAt(i);\n        c = parseInt(s.substr(k,2), 16);\n        if (c > 255) {\n           throw new RangeError();\n        }\n     \n       // console.log(\"index\" ,k + \" sub: \"+s.substr(k,2));\n       // console.log(\"c:\"+c );\n       // j = (c ^ (crc >> 8)) & 0xFF;\n        //crc = crcTable[j] ^ (crc << 8);\n      //  crc = crcTable[j] ^ (crc << 8);\n      // for (let b of data) {\n          crc = (crc >> 8) ^ crcTable[(crc ^ c) & 0x00FF];\n\n\t\t}\n   //console.log(\"crc:\"+crc );\n\t//\treturn (~crc) & 0x0ffff;\n  var crcH=(crc & 0x00FF)<<8;\n  var crcL=(crc >>8) & 0x00FF;\n     \n  crc= crcH | crcL;\n // console.log(\"crc: \"+crc +\" crcH: \"+crcH +\" crcL: \"+crcL  );\n    return (crc) & 0x0ffff;\n        \n   // }\n\n    //return ((crc ^ 0) & 0xFFFF);\n\n}\n\n"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "31a202f0-9820-11ed-a76d-9955dd563d2d"
+      },
+      "name" : "Transform_ModbusV1",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.transform.TbTransformMsgNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 273,
+        "layoutY" : 146
+      },
+      "configuration" : {
+        "tellFailureIfAbsent" : true,
+        "clientAttributeNames" : [ ],
+        "sharedAttributeNames" : [ "n_phase" ],
+        "serverAttributeNames" : [ ],
+        "latestTsKeyNames" : [ ],
+        "getLatestValueWithTs" : false
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "31a27820-9820-11ed-a76d-9955dd563d2d"
+      },
+      "name" : "Get number phase n_phase",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.metadata.TbGetAttributesNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "update timeseries",
+        "layoutX" : 865,
+        "layoutY" : 150
+      },
+      "configuration" : {
+        "defaultTTL" : 0
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "31a27821-9820-11ed-a76d-9955dd563d2d"
+      },
+      "name" : "Eastron Update",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.telemetry.TbMsgTimeseriesNode"
+    } ],
+    "ruleChainConnections" : null
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

@@ -1,0 +1,1409 @@
+{
+  "entityType" : "DASHBOARD",
+  "entity" : {
+    "assignedCustomers" : [ {
+      "customerId" : {
+        "entityType" : "CUSTOMER",
+        "id" : "f6df0320-a3d7-11ed-a76d-9955dd563d2d"
+      },
+      "title" : "Grassani srl",
+      "public" : false
+    } ],
+    "configuration" : {
+      "description" : "",
+      "widgets" : {
+        "b8caa13a-77c3-86f0-c2df-23db1b7c2669" : {
+          "isSystemType" : true,
+          "bundleAlias" : "input_widgets",
+          "typeAlias" : "markers_placement_openstreetmap",
+          "type" : "latest",
+          "title" : "New widget",
+          "sizeX" : 8.5,
+          "sizeY" : 6.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "ade2718c-a14b-6ff8-9b68-08d11eab1e8d",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "latitude",
+                "type" : "attribute",
+                "label" : "latitude",
+                "color" : "#ffc107",
+                "settings" : { },
+                "_hash" : 0.6283212843403118,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "longitude",
+                "type" : "attribute",
+                "label" : "longitude",
+                "color" : "#607d8b",
+                "settings" : { },
+                "_hash" : 0.5501352116942039,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "label",
+                "type" : "attribute",
+                "label" : "label",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.7033268019078807
+              }, {
+                "name" : "MSG",
+                "type" : "timeseries",
+                "label" : "MSG",
+                "color" : "#ffc107",
+                "settings" : { },
+                "_hash" : 0.6591415789674726
+              }, {
+                "name" : "intensita",
+                "type" : "timeseries",
+                "label" : "intensita",
+                "color" : "#607d8b",
+                "settings" : { },
+                "_hash" : 0.9062463486924559
+              } ]
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "timewindowMs" : 60000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "provider" : "google-map",
+              "gmApiKey" : "AIzaSyDoEx2kaGz3PxwbI9T7ccTSg5xjdw8Nw8Q",
+              "gmDefaultMapType" : "hybrid",
+              "mapProvider" : "OpenStreetMap.HOT",
+              "useCustomProvider" : false,
+              "customProviderTileUrl" : "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+              "mapProviderHere" : "HERE.normalDay",
+              "credentials" : {
+                "app_id" : "AhM6TzD9ThyK78CT3ptx",
+                "app_code" : "p6NPiITB3Vv0GMUFnkLOOg"
+              },
+              "mapImageUrl" : "data:image/svg+xml;base64,PHN2ZyBpZD0ic3ZnMiIgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGhlaWdodD0iMTAwIiB3aWR0aD0iMTAwIiB2ZXJzaW9uPSIxLjEiIHhtbG5zOmNjPSJodHRwOi8vY3JlYXRpdmVjb21tb25zLm9yZy9ucyMiIHhtbG5zOmRjPSJodHRwOi8vcHVybC5vcmcvZGMvZWxlbWVudHMvMS4xLyIgdmlld0JveD0iMCAwIDEwMCAxMDAiPgogPGcgaWQ9ImxheWVyMSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMCAtOTUyLjM2KSI+CiAgPHJlY3QgaWQ9InJlY3Q0Njg0IiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBoZWlnaHQ9Ijk5LjAxIiB3aWR0aD0iOTkuMDEiIHN0cm9rZT0iIzAwMCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiB5PSI5NTIuODYiIHg9Ii40OTUwNSIgc3Ryb2tlLXdpZHRoPSIuOTkwMTAiIGZpbGw9IiNlZWUiLz4KICA8dGV4dCBpZD0idGV4dDQ2ODYiIHN0eWxlPSJ3b3JkLXNwYWNpbmc6MHB4O2xldHRlci1zcGFjaW5nOjBweDt0ZXh0LWFuY2hvcjptaWRkbGU7dGV4dC1hbGlnbjpjZW50ZXIiIGZvbnQtd2VpZ2h0PSJib2xkIiB4bWw6c3BhY2U9InByZXNlcnZlIiBmb250LXNpemU9IjEwcHgiIGxpbmUtaGVpZ2h0PSIxMjUlIiB5PSI5NzAuNzI4MDkiIHg9IjQ5LjM5NjQ3NyIgZm9udC1mYW1pbHk9IlJvYm90byIgZmlsbD0iIzY2NjY2NiI+PHRzcGFuIGlkPSJ0c3BhbjQ2OTAiIHg9IjUwLjY0NjQ3NyIgeT0iOTcwLjcyODA5Ij5JbWFnZSBiYWNrZ3JvdW5kIDwvdHNwYW4+PHRzcGFuIGlkPSJ0c3BhbjQ2OTIiIHg9IjQ5LjM5NjQ3NyIgeT0iOTgzLjIyODA5Ij5pcyBub3QgY29uZmlndXJlZDwvdHNwYW4+PC90ZXh0PgogIDxyZWN0IGlkPSJyZWN0NDY5NCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgaGVpZ2h0PSIxOS4zNiIgd2lkdGg9IjY5LjM2IiBzdHJva2U9IiMwMDAiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgeT0iOTkyLjY4IiB4PSIxNS4zMiIgc3Ryb2tlLXdpZHRoPSIuNjM5ODYiIGZpbGw9Im5vbmUiLz4KIDwvZz4KPC9zdmc+Cg==",
+              "tmApiKey" : "84d6d83e0e51e481e50454ccbe8986b",
+              "tmDefaultMapType" : "hybrid",
+              "latKeyName" : "latitude",
+              "lngKeyName" : "longitude",
+              "xPosKeyName" : "xPos",
+              "yPosKeyName" : "yPos",
+              "defaultZoomLevel" : 20,
+              "defaultCenterPosition" : "0,0",
+              "disableScrollZooming" : false,
+              "disableDoubleClickZooming" : false,
+              "disableZoomControl" : false,
+              "fitMapBounds" : true,
+              "useDefaultCenterPosition" : false,
+              "mapPageSize" : 16384,
+              "markerOffsetX" : 0.5,
+              "markerOffsetY" : 1,
+              "draggableMarker" : true,
+              "showLabel" : false,
+              "showTooltip" : true,
+              "showTooltipAction" : "click",
+              "autocloseTooltip" : true,
+              "useTooltipFunction" : false,
+              "tooltipPattern" : "<b>${entityName}</b><br/><b>${entityLabel}</b><br/><br/><b>Intensità:</b> ${intensita:0}<br/><br/><b>Latitude:</b> ${latitude:7}<br/><b>Longitude:</b> ${longitude:7}<br/><br/>",
+              "tooltipOffsetX" : 0,
+              "tooltipOffsetY" : -1,
+              "color" : "#fe7569",
+              "useColorFunction" : false,
+              "useMarkerImageFunction" : true,
+              "markerImageFunction" : "\tvar res = {\n\t    url: images[1],\n\t    size: 30\n\t}\n\tvar MSG = dsData[dsIndex]['intensita'];\n\t\n\tif (typeof MSG !== undefined) \n\t{\n\t    if (MSG  == 0 ) {res.url = images[0]}\n\t    if (MSG  == 25 ) {res.url = images[1]}\n\t    if (MSG  == 50 ) {res.url = images[2]}\n\t    if (MSG  == 75 ) {res.url = images[3]}\n\t    if (MSG  == 100 ) {res.url = images[4]}\n\treturn res;\n}",
+              "markerImages" : [ "data:image/png;base64,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", "data:image/png;base64,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", "data:image/png;base64,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", "data:image/png;base64,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", "data:image/png;base64,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" ],
+              "showPolygon" : false,
+              "polygonKeyName" : "coordinates",
+              "editablePolygon" : true,
+              "showPolygonLabel" : false,
+              "usePolygonLabelFunction" : false,
+              "polygonLabel" : "${entityName}",
+              "showPolygonTooltip" : false,
+              "showPolygonTooltipAction" : "click",
+              "autoClosePolygonTooltip" : true,
+              "usePolygonTooltipFunction" : false,
+              "polygonTooltipPattern" : "<b>${entityName}</b><br/><br/><b>TimeStamp:</b> ${coordinates|ts:7}<br/><br/><link-act name='delete'>Delete</link-act>",
+              "polygonColor" : "#3388ff",
+              "polygonOpacity" : 0.5,
+              "usePolygonColorFunction" : false,
+              "polygonStrokeColor" : "#3388ff",
+              "polygonStrokeOpacity" : 1,
+              "polygonStrokeWeight" : 1,
+              "usePolygonStrokeColorFunction" : false,
+              "showCircle" : false,
+              "circleKeyName" : "perimeter",
+              "editableCircle" : false,
+              "showCircleLabel" : false,
+              "useCircleLabelFunction" : false,
+              "circleLabel" : "${entityName}",
+              "showCircleTooltip" : false,
+              "showCircleTooltipAction" : "click",
+              "autoCloseCircleTooltip" : true,
+              "useCircleTooltipFunction" : false,
+              "circleTooltipPattern" : "<b>${entityName}</b><br/><br/><b>TimeStamp:</b> ${ts:7}",
+              "circleFillColor" : "#3388ff",
+              "circleFillColorOpacity" : 0.2,
+              "useCircleFillColorFunction" : false,
+              "circleStrokeColor" : "#3388ff",
+              "circleStrokeOpacity" : 1,
+              "circleStrokeWeight" : 3,
+              "useCircleStrokeColorFunction" : false,
+              "snappable" : false,
+              "initDragMode" : false,
+              "hideAllControlButton" : false,
+              "hideDrawControlButton" : false,
+              "hideEditControlButton" : false,
+              "hideRemoveControlButton" : false,
+              "useClusterMarkers" : false,
+              "zoomOnClick" : true,
+              "maxClusterRadius" : 80,
+              "animate" : true,
+              "spiderfyOnMaxZoom" : false,
+              "showCoverageOnHover" : true,
+              "chunkedLoading" : false,
+              "removeOutsideVisibleBounds" : true
+            },
+            "title" : "Lamps Placement",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "widgetStyle" : { },
+            "actions" : {
+              "tooltipAction" : [ {
+                "name" : "delete",
+                "icon" : "more_horiz",
+                "type" : "custom",
+                "customFunction" : "var entityDatasource = widgetContext.map.map.datasources.filter(\n    function(entity) {\n        return entity.entityId === entityId.id;\n    });\n\nwidgetContext.map.setMarkerLocation(entityDatasource[0], null, null).subscribe();",
+                "id" : "54c293c4-9ca6-e34f-dc6a-0271944c1c66"
+              }, {
+                "name" : "delete_polygon",
+                "icon" : "more_horiz",
+                "type" : "custom",
+                "customFunction" : "var entityDatasource = widgetContext.map.map.datasources.filter(\n    function(entity) {\n        return entity.entityId === entityId.id\n    });\n\nwidgetContext.map.savePolygonLocation(entityDatasource[0], null).subscribe();",
+                "id" : "6beb7bed-dfd8-388d-b60c-82988ab52f06"
+              } ]
+            },
+            "showTitleIcon" : false,
+            "titleIcon" : "more_horiz",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "displayTimewindow" : true,
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "b8caa13a-77c3-86f0-c2df-23db1b7c2669"
+        },
+        "0130b138-9487-2f98-28a4-29cf83b689af" : {
+          "isSystemType" : true,
+          "bundleAlias" : "cards",
+          "typeAlias" : "timeseries_table",
+          "type" : "timeseries",
+          "title" : "New widget",
+          "sizeX" : 8,
+          "sizeY" : 6.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "fa01c779-eb2e-c9e1-b6f4-33699356cb04",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "P1",
+                "type" : "timeseries",
+                "label" : "P1",
+                "color" : "#00c853",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.011864217338768857,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "P2",
+                "type" : "timeseries",
+                "label" : "P2",
+                "color" : "#d50000",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.36426973721735356,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "P3",
+                "type" : "timeseries",
+                "label" : "P3",
+                "color" : "#ffab00",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.11683482897612185,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "TotEnA",
+                "type" : "timeseries",
+                "label" : "TotEnA",
+                "color" : "#304ffe",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.3041104404821291,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "TotEnR",
+                "type" : "timeseries",
+                "label" : "TotEnR",
+                "color" : "#c51162",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.29522145946743683,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ],
+              "latestDataKeys" : null
+            }, {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "71f6b346-3608-d7c4-2423-52576aff3190",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "P1",
+                "type" : "timeseries",
+                "label" : "P1",
+                "color" : "#3f51b5",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "cellStyleFunction" : "",
+                  "useCellContentFunction" : false,
+                  "cellContentFunction" : ""
+                },
+                "_hash" : 0.9433961313343183
+              }, {
+                "name" : "P2",
+                "type" : "timeseries",
+                "label" : "P2",
+                "color" : "#e91e63",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "cellStyleFunction" : "",
+                  "useCellContentFunction" : false,
+                  "cellContentFunction" : ""
+                },
+                "_hash" : 0.8805134256042355
+              }, {
+                "name" : "P3",
+                "type" : "timeseries",
+                "label" : "P3",
+                "color" : "#ffeb3b",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "cellStyleFunction" : "",
+                  "useCellContentFunction" : false,
+                  "cellContentFunction" : ""
+                },
+                "_hash" : 0.40700180082984727
+              }, {
+                "name" : "TotEnA",
+                "type" : "timeseries",
+                "label" : "TotEnA",
+                "color" : "#cddc39",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "cellStyleFunction" : "",
+                  "useCellContentFunction" : false,
+                  "cellContentFunction" : ""
+                },
+                "_hash" : 0.1523649276796889
+              }, {
+                "name" : "TotEnR",
+                "type" : "timeseries",
+                "label" : "TotEnR",
+                "color" : "#009688",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "cellStyleFunction" : "",
+                  "useCellContentFunction" : false,
+                  "cellContentFunction" : ""
+                },
+                "_hash" : 0.39215040484858854
+              } ],
+              "latestDataKeys" : null
+            }, {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "68ebcd16-5978-3df1-3d16-c8a5d3f7519f",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "P1",
+                "type" : "timeseries",
+                "label" : "P1",
+                "color" : "#546e7a",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.5099739745360073,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "P2",
+                "type" : "timeseries",
+                "label" : "P2",
+                "color" : "#8e24aa",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.1788706410136811,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "P3",
+                "type" : "timeseries",
+                "label" : "P3",
+                "color" : "#7cb342",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.432458697397471,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "TotEnA",
+                "type" : "timeseries",
+                "label" : "TotEnA",
+                "color" : "#039be5",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.12091266741418127,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              }, {
+                "name" : "TotEnR",
+                "type" : "timeseries",
+                "label" : "TotEnR",
+                "color" : "#fb8c00",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "useCellContentFunction" : false
+                },
+                "_hash" : 0.5589090009218285,
+                "units" : null,
+                "decimals" : null,
+                "funcBody" : null,
+                "usePostProcessing" : null,
+                "postFuncBody" : null
+              } ],
+              "latestDataKeys" : null
+            }, {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "4e134f71-3c9f-70ec-3336-12a42b66c3b1",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "ActivePower_Load_Total",
+                "type" : "timeseries",
+                "label" : "ActivePower_Load_Total",
+                "color" : "#f4511e",
+                "settings" : {
+                  "useCellStyleFunction" : false,
+                  "cellStyleFunction" : "",
+                  "useCellContentFunction" : false,
+                  "cellContentFunction" : ""
+                },
+                "_hash" : 0.9766191572240167
+              }, {
+                "name" : "MSG",
+                "type" : "timeseries",
+                "label" : "MSG",
+                "color" : "#00bcd4",
+                "settings" : { },
+                "_hash" : 0.6345434634302544
+              } ],
+              "latestDataKeys" : null
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "interval" : 1000,
+                "timewindowMs" : 60000
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "showTimestamp" : true,
+              "displayPagination" : true,
+              "defaultPageSize" : 10
+            },
+            "title" : "METER Devices ",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400,
+              "padding" : "5px 10px 5px 10px"
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "widgetStyle" : { },
+            "actions" : { },
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "displayTimewindow" : true,
+            "titleTooltip" : "",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "0130b138-9487-2f98-28a4-29cf83b689af"
+        },
+        "f00f1b0c-9c91-3f57-d306-63d10be95b93" : {
+          "isSystemType" : false,
+          "bundleAlias" : "prova2",
+          "typeAlias" : "timeseries_chart2",
+          "type" : "timeseries",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 11.5,
+          "sizeY" : 5.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "fa01c779-eb2e-c9e1-b6f4-33699356cb04",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "P1",
+                "type" : "timeseries",
+                "label" : "P1",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.11216945851863325
+              }, {
+                "name" : "P2",
+                "type" : "timeseries",
+                "label" : "P2",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.37492755493256547
+              }, {
+                "name" : "P3",
+                "type" : "timeseries",
+                "label" : "P3",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.8866530726851802
+              } ]
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "interval" : 1800000,
+                "timewindowMs" : 604800000
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgb(0, 58, 93)",
+            "padding" : "8px",
+            "settings" : {
+              "shadowSize" : 4,
+              "fontColor" : "#545454",
+              "fontSize" : 10,
+              "xaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "yaxis" : {
+                "showLabels" : true,
+                "color" : "#545454",
+                "min" : 0
+              },
+              "grid" : {
+                "color" : "#545454",
+                "tickColor" : "#DDDDDD",
+                "verticalLines" : false,
+                "horizontalLines" : false,
+                "outlineWidth" : 1
+              },
+              "stack" : false,
+              "tooltipIndividual" : false,
+              "timeForComparison" : "months",
+              "xaxisSecond" : {
+                "axisPosition" : "top",
+                "showLabels" : true
+              }
+            },
+            "title" : "Consumi Quadro Generale",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "18px",
+              "fontWeight" : 400
+            },
+            "showTitleIcon" : false,
+            "titleIcon" : "more_horiz",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "useDashboardTimewindow" : true,
+            "displayTimewindow" : true,
+            "showLegend" : true,
+            "actions" : {
+              "headerButton" : [ {
+                "id" : "cdfa9456-cd7c-770c-5c7b-fb64f52fa824",
+                "name" : "Download CSV",
+                "icon" : "file_download",
+                "type" : "customPretty",
+                "customHtml" : "<md-dialog aria-label=\"Scarica csv\">\r\n    <form name=\"addEntityForm\" class=\"add-entity-form\" ng-submit=\"vm.save()\">\r\n        <md-toolbar>\r\n            <div class=\"md-toolbar-tools\">\r\n                <h2>Scarica CSV</h2>\r\n                <span flex></span>\r\n                <md-button class=\"md-icon-button\" ng-click=\"vm.cancel()\">\r\n                    <ng-md-icon icon=\"close\" aria-label=\"Close\"></ng-md-icon>\r\n                </md-button>\r\n            </div>\r\n        </md-toolbar>\r\n        <md-content class=\"md-padding\" layout=\"column\">\r\n            <md-input-container>\r\n              <label>Numero elementi</label>  \r\n              <input  name=\"elementNumber\" type=\"number\" ng-change=\"vm.elementNumber()\" ng-model=\"myValue\"/>\r\n              <div ng-messages=\"rpcForm.rpcMethod.$error\">\r\n              </div>\r\n            </md-input-container>  \r\n        </md-content>\r\n        <md-dialog-actions>\r\n            <md-button  ng-click=\"vm.download()\"  class=\"md-raised md-primary\">Scarica</md-button>\r\n            <md-button ng-click=\"vm.cancel()\" class=\"md-primary\">Annulla</md-button>\r\n        </md-dialog-actions>\r\n    </form>\r\n</md-dialog>",
+                "customCss" : ".add-entity-form md-input-container {\r\n    padding-right: 10px;\r\n}\r\n\r\n.add-entity-form .boolean-value-input {\r\n    padding-left: 5px;\r\n}\r\n\r\n.add-entity-form .boolean-value-input .checkbox-label {\r\n    margin-bottom: 8px;\r\n    color: rgba(0,0,0,0.54);\r\n    font-size: 12px;\r\n}\r\n\r\n.relations-list .header {\r\n    padding-right: 5px;\r\n    padding-bottom: 5px;\r\n    padding-left: 5px;\r\n}\r\n\r\n.relations-list .header .cell {\r\n    padding-right: 5px;\r\n    padding-left: 5px;\r\n    font-size: 12px;\r\n    font-weight: 700;\r\n    color: rgba(0, 0, 0, .54);\r\n    white-space: nowrap;\r\n}\r\n\r\n.relations-list .body {\r\n    padding-right: 5px;\r\n    padding-bottom: 15px;\r\n    padding-left: 5px;\r\n}\r\n\r\n.relations-list .body .row {\r\n    padding-top: 5px;\r\n}\r\n\r\n.relations-list .body .cell {\r\n    padding-right: 5px;\r\n    padding-left: 5px;\r\n}\r\n\r\n.relations-list .body md-autocomplete-wrap md-input-container {\r\n    height: 30px;\r\n}\r\n\r\n.relations-list .body .md-button {\r\n    margin: 0;\r\n}\r\n\r\n",
+                "customFunction" : "var $injector = widgetContext.$scope.$injector;\r\nvar fileOutput=\"\";\r\nvar keys=[];\r\nvar starTs;\r\nvar endTs;\r\nvar dataKeysDevice=\"\";\r\nvar element=100;\r\n\r\nvar $mdDialog = $injector.get('$mdDialog'),\r\n    $document = $injector.get('$document'),\r\n    $q = $injector.get('$q'),\r\n    $rootScope = $injector.get('$rootScope'),\r\n    types = $injector.get('types'),\r\n    assetService = $injector.get('assetService'),\r\n    deviceService = $injector.get('deviceService'),\r\n    attributeService = $injector.get('attributeService'),\r\n    entityRelationService = $injector.get('entityRelationService');\r\n    \r\n\r\nopenAddEntityDialog();\r\n\r\nfunction openAddEntityDialog() {\r\n    $mdDialog.show({\r\n        controller: ['$scope','$mdDialog', AddEntityDialogController],\r\n        controllerAs: 'vm',\r\n        template: htmlTemplate,\r\n        locals: {\r\n            entityId: entityId\r\n        },\r\n        parent: angular.element($document[0].body),\r\n        targetEvent: $event,\r\n        multiple: true,\r\n        clickOutsideToClose: false\r\n    });\r\n\r\n}\r\n\r\nfunction AddEntityDialogController($scope, $mdDialog) {\r\n    var vm = this;\r\n    vm.allowedEntityTypes = [types.entityType.asset, types.entityType.device];\r\n    vm.allowedRelatedEntityTypes = [];\r\n    vm.entitySearchDirection = types.entitySearchDirection;\r\n    vm.dataKeyType=types.dataKeyType.timeseries;\r\n    vm.attributes = {};\r\n    vm.relations = [];\r\n    vm.entries =[];\r\n    vm.deviceEntries ={};\r\n    vm.entityId = entityId;\r\n    vm.entityName = entityName;\r\n    vm.entityType = entityId.entityType;\r\n    vm.serverAttributes = {};\r\n    vm.newRelations = [];\r\n    vm.relationsToDelete = [];\r\n   \r\n    vm.starTs=widgetContext.timeWindow.minTime;\r\n    vm.endTs=widgetContext.timeWindow.maxTime;\r\n    vm.numberRow=element;\r\n    vm.keys=widgetContext.datasources[0];\r\n\tvm.file=fileOutput;\r\n    \r\n\tgetEntityInfo();\r\n\t\r\n    \r\n    vm.save = function() {\r\n        $scope.addEntityForm.$setPristine();\r\n        saveEntityPromise().then(\r\n            function (entity) {\r\n                $mdDialog.hide();\r\n            }\r\n        );\r\n        \r\n        \r\n    };\r\n    function getEntityInfo() {\r\n      \r\n        starTs=widgetContext.timeWindow.minTime;\r\n        endTs=widgetContext.timeWindow.maxTime;\r\n        var numberRow=element;\r\n        keys=widgetContext.datasources[0];\r\n        \r\n        \r\n        for(var i=0; i<keys.dataKeys.length;i++){\r\n            var key=keys.dataKeys[i].name;\r\n            dataKeysDevice+=key+\",\";\r\n            \r\n        }   \r\n        \r\n        dataKeysDevice=dataKeysDevice.substring(0, dataKeysDevice.length - 1);\r\n        \r\n        attributeService.getEntityTimeseriesValues(\r\n               entityId.entityType, entityId.id,dataKeysDevice, starTs, endTs, element).then\r\n                    (response =>{ \r\n                        parseValues(response);\r\n                      \r\n                    })\r\n    \r\n        }\r\n\r\n\r\n  \r\n    function parseValues(timeseries){\r\n        \r\n        var parts = \"device;key; ts; value\\n\";\r\n    \r\n        Object.keys(timeseries).forEach( key => {\r\n        \r\n            timeseries[key].forEach (element => {\r\n                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\r\n            \r\n            })\r\n        })\r\n        \r\n        fileOutput=parts;\r\n\t\tvm.file=fileOutput;\r\n      \r\n    }\r\n\r\n    \r\n    vm.cancel = function() {\r\n        $mdDialog.hide();\r\n    };\r\n   \r\n   vm.elementNumber = function() {\r\n        if($scope.myValue && $scope.myValue>0 ){\r\n            vm.numberRow=$scope.myValue;\r\n        }else{\r\n            vm.numberRow=100;\r\n        }\r\n\t\t\r\n\t\tgetEntityInfoValue();\r\n    };\r\n    \r\n   vm.download=function() {\r\n       downloadFile('timeseries.csv', 'data:text/csv;charset=UTF-8,' + encodeURIComponent(fileOutput));\r\n   }\r\n   \r\n    function downloadFile(fileName, urlData) {\r\n        var aLink = document.createElement('a');\r\n        var evt = document.createEvent(\"HTMLEvents\");\r\n        evt.initEvent(\"click\");\r\n        aLink.download = fileName;\r\n        aLink.href = urlData;\r\n        aLink.dispatchEvent(evt);\r\n        aLink.click();\r\n         $mdDialog.hide();\r\n    }  \r\n    \r\n\tfunction getEntityInfoValue() {\r\n      \r\n        var starTs=vm.starTs;\r\n        var endTs=vm.endTs;\r\n        var keys=vm.keys;\r\n\t\tvar element=vm.numberRow;\t\t       \r\n\t    var dataKeysDevice=\"\";\r\n\r\n        for(var i=0; i<keys.dataKeys.length;i++){\r\n            var key=keys.dataKeys[i].name;\r\n            dataKeysDevice+=key+\",\";\r\n            \r\n        }   \r\n        \r\n        dataKeysDevice=dataKeysDevice.substring(0, dataKeysDevice.length - 1);\r\n        \r\n        attributeService.getEntityTimeseriesValues(\r\n               entityId.entityType, entityId.id,dataKeysDevice, starTs, endTs, element).then\r\n                    (response =>{ \r\n                        parseValues(response);\r\n                      \r\n                    })\r\n    \r\n        }\r\n}"
+              } ]
+            },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "legendConfig" : {
+              "direction" : "column",
+              "position" : "bottom",
+              "sortDataKeys" : false,
+              "showMin" : false,
+              "showMax" : false,
+              "showAvg" : true,
+              "showTotal" : false,
+              "showLatest" : false
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "f00f1b0c-9c91-3f57-d306-63d10be95b93"
+        },
+        "ebac0aa3-f1b8-91df-c733-5cb6d69b58e9" : {
+          "isSystemType" : false,
+          "bundleAlias" : "prova2",
+          "typeAlias" : "timeseries_chart2",
+          "type" : "timeseries",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 11.5,
+          "sizeY" : 5.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "71f6b346-3608-d7c4-2423-52576aff3190",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "P1",
+                "type" : "timeseries",
+                "label" : "P1",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.11216945851863325
+              }, {
+                "name" : "P2",
+                "type" : "timeseries",
+                "label" : "P2",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.37492755493256547
+              }, {
+                "name" : "P3",
+                "type" : "timeseries",
+                "label" : "P3",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.8866530726851802
+              } ]
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "interval" : 1800000,
+                "timewindowMs" : 604800000
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgb(0, 58, 93)",
+            "padding" : "8px",
+            "settings" : {
+              "shadowSize" : 4,
+              "fontColor" : "#545454",
+              "fontSize" : 10,
+              "xaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "yaxis" : {
+                "showLabels" : true,
+                "color" : "#545454",
+                "min" : 0
+              },
+              "grid" : {
+                "color" : "#545454",
+                "tickColor" : "#DDDDDD",
+                "verticalLines" : false,
+                "horizontalLines" : false,
+                "outlineWidth" : 1
+              },
+              "stack" : false,
+              "tooltipIndividual" : false,
+              "timeForComparison" : "months",
+              "xaxisSecond" : {
+                "axisPosition" : "top",
+                "showLabels" : true
+              }
+            },
+            "title" : "Consumi Quadro Pompa",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "18px",
+              "fontWeight" : 400
+            },
+            "showTitleIcon" : false,
+            "titleIcon" : "more_horiz",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "useDashboardTimewindow" : true,
+            "displayTimewindow" : true,
+            "showLegend" : true,
+            "actions" : {
+              "headerButton" : [ {
+                "id" : "cdfa9456-cd7c-770c-5c7b-fb64f52fa824",
+                "name" : "Download CSV",
+                "icon" : "file_download",
+                "type" : "customPretty",
+                "customHtml" : "<md-dialog aria-label=\"Scarica csv\">\r\n    <form name=\"addEntityForm\" class=\"add-entity-form\" ng-submit=\"vm.save()\">\r\n        <md-toolbar>\r\n            <div class=\"md-toolbar-tools\">\r\n                <h2>Scarica CSV</h2>\r\n                <span flex></span>\r\n                <md-button class=\"md-icon-button\" ng-click=\"vm.cancel()\">\r\n                    <ng-md-icon icon=\"close\" aria-label=\"Close\"></ng-md-icon>\r\n                </md-button>\r\n            </div>\r\n        </md-toolbar>\r\n        <md-content class=\"md-padding\" layout=\"column\">\r\n            <md-input-container>\r\n              <label>Numero elementi</label>  \r\n              <input  name=\"elementNumber\" type=\"number\" ng-change=\"vm.elementNumber()\" ng-model=\"myValue\"/>\r\n              <div ng-messages=\"rpcForm.rpcMethod.$error\">\r\n              </div>\r\n            </md-input-container>  \r\n        </md-content>\r\n        <md-dialog-actions>\r\n            <md-button  ng-click=\"vm.download()\"  class=\"md-raised md-primary\">Scarica</md-button>\r\n            <md-button ng-click=\"vm.cancel()\" class=\"md-primary\">Annulla</md-button>\r\n        </md-dialog-actions>\r\n    </form>\r\n</md-dialog>",
+                "customCss" : ".add-entity-form md-input-container {\r\n    padding-right: 10px;\r\n}\r\n\r\n.add-entity-form .boolean-value-input {\r\n    padding-left: 5px;\r\n}\r\n\r\n.add-entity-form .boolean-value-input .checkbox-label {\r\n    margin-bottom: 8px;\r\n    color: rgba(0,0,0,0.54);\r\n    font-size: 12px;\r\n}\r\n\r\n.relations-list .header {\r\n    padding-right: 5px;\r\n    padding-bottom: 5px;\r\n    padding-left: 5px;\r\n}\r\n\r\n.relations-list .header .cell {\r\n    padding-right: 5px;\r\n    padding-left: 5px;\r\n    font-size: 12px;\r\n    font-weight: 700;\r\n    color: rgba(0, 0, 0, .54);\r\n    white-space: nowrap;\r\n}\r\n\r\n.relations-list .body {\r\n    padding-right: 5px;\r\n    padding-bottom: 15px;\r\n    padding-left: 5px;\r\n}\r\n\r\n.relations-list .body .row {\r\n    padding-top: 5px;\r\n}\r\n\r\n.relations-list .body .cell {\r\n    padding-right: 5px;\r\n    padding-left: 5px;\r\n}\r\n\r\n.relations-list .body md-autocomplete-wrap md-input-container {\r\n    height: 30px;\r\n}\r\n\r\n.relations-list .body .md-button {\r\n    margin: 0;\r\n}\r\n\r\n",
+                "customFunction" : "var $injector = widgetContext.$scope.$injector;\r\nvar fileOutput=\"\";\r\nvar keys=[];\r\nvar starTs;\r\nvar endTs;\r\nvar dataKeysDevice=\"\";\r\nvar element=100;\r\n\r\nvar $mdDialog = $injector.get('$mdDialog'),\r\n    $document = $injector.get('$document'),\r\n    $q = $injector.get('$q'),\r\n    $rootScope = $injector.get('$rootScope'),\r\n    types = $injector.get('types'),\r\n    assetService = $injector.get('assetService'),\r\n    deviceService = $injector.get('deviceService'),\r\n    attributeService = $injector.get('attributeService'),\r\n    entityRelationService = $injector.get('entityRelationService');\r\n    \r\n\r\nopenAddEntityDialog();\r\n\r\nfunction openAddEntityDialog() {\r\n    $mdDialog.show({\r\n        controller: ['$scope','$mdDialog', AddEntityDialogController],\r\n        controllerAs: 'vm',\r\n        template: htmlTemplate,\r\n        locals: {\r\n            entityId: entityId\r\n        },\r\n        parent: angular.element($document[0].body),\r\n        targetEvent: $event,\r\n        multiple: true,\r\n        clickOutsideToClose: false\r\n    });\r\n\r\n}\r\n\r\nfunction AddEntityDialogController($scope, $mdDialog) {\r\n    var vm = this;\r\n    vm.allowedEntityTypes = [types.entityType.asset, types.entityType.device];\r\n    vm.allowedRelatedEntityTypes = [];\r\n    vm.entitySearchDirection = types.entitySearchDirection;\r\n    vm.dataKeyType=types.dataKeyType.timeseries;\r\n    vm.attributes = {};\r\n    vm.relations = [];\r\n    vm.entries =[];\r\n    vm.deviceEntries ={};\r\n    vm.entityId = entityId;\r\n    vm.entityName = entityName;\r\n    vm.entityType = entityId.entityType;\r\n    vm.serverAttributes = {};\r\n    vm.newRelations = [];\r\n    vm.relationsToDelete = [];\r\n   \r\n    vm.starTs=widgetContext.timeWindow.minTime;\r\n    vm.endTs=widgetContext.timeWindow.maxTime;\r\n    vm.numberRow=element;\r\n    vm.keys=widgetContext.datasources[0];\r\n\tvm.file=fileOutput;\r\n    \r\n\tgetEntityInfo();\r\n\t\r\n    \r\n    vm.save = function() {\r\n        $scope.addEntityForm.$setPristine();\r\n        saveEntityPromise().then(\r\n            function (entity) {\r\n                $mdDialog.hide();\r\n            }\r\n        );\r\n        \r\n        \r\n    };\r\n    function getEntityInfo() {\r\n      \r\n        starTs=widgetContext.timeWindow.minTime;\r\n        endTs=widgetContext.timeWindow.maxTime;\r\n        var numberRow=element;\r\n        keys=widgetContext.datasources[0];\r\n        \r\n        \r\n        for(var i=0; i<keys.dataKeys.length;i++){\r\n            var key=keys.dataKeys[i].name;\r\n            dataKeysDevice+=key+\",\";\r\n            \r\n        }   \r\n        \r\n        dataKeysDevice=dataKeysDevice.substring(0, dataKeysDevice.length - 1);\r\n        \r\n        attributeService.getEntityTimeseriesValues(\r\n               entityId.entityType, entityId.id,dataKeysDevice, starTs, endTs, element).then\r\n                    (response =>{ \r\n                        parseValues(response);\r\n                      \r\n                    })\r\n    \r\n        }\r\n\r\n\r\n  \r\n    function parseValues(timeseries){\r\n        \r\n        var parts = \"device;key; ts; value\\n\";\r\n    \r\n        Object.keys(timeseries).forEach( key => {\r\n        \r\n            timeseries[key].forEach (element => {\r\n                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\r\n            \r\n            })\r\n        })\r\n        \r\n        fileOutput=parts;\r\n\t\tvm.file=fileOutput;\r\n      \r\n    }\r\n\r\n    \r\n    vm.cancel = function() {\r\n        $mdDialog.hide();\r\n    };\r\n   \r\n   vm.elementNumber = function() {\r\n        if($scope.myValue && $scope.myValue>0 ){\r\n            vm.numberRow=$scope.myValue;\r\n        }else{\r\n            vm.numberRow=100;\r\n        }\r\n\t\t\r\n\t\tgetEntityInfoValue();\r\n    };\r\n    \r\n   vm.download=function() {\r\n       downloadFile('timeseries.csv', 'data:text/csv;charset=UTF-8,' + encodeURIComponent(fileOutput));\r\n   }\r\n   \r\n    function downloadFile(fileName, urlData) {\r\n        var aLink = document.createElement('a');\r\n        var evt = document.createEvent(\"HTMLEvents\");\r\n        evt.initEvent(\"click\");\r\n        aLink.download = fileName;\r\n        aLink.href = urlData;\r\n        aLink.dispatchEvent(evt);\r\n        aLink.click();\r\n         $mdDialog.hide();\r\n    }  \r\n    \r\n\tfunction getEntityInfoValue() {\r\n      \r\n        var starTs=vm.starTs;\r\n        var endTs=vm.endTs;\r\n        var keys=vm.keys;\r\n\t\tvar element=vm.numberRow;\t\t       \r\n\t    var dataKeysDevice=\"\";\r\n\r\n        for(var i=0; i<keys.dataKeys.length;i++){\r\n            var key=keys.dataKeys[i].name;\r\n            dataKeysDevice+=key+\",\";\r\n            \r\n        }   \r\n        \r\n        dataKeysDevice=dataKeysDevice.substring(0, dataKeysDevice.length - 1);\r\n        \r\n        attributeService.getEntityTimeseriesValues(\r\n               entityId.entityType, entityId.id,dataKeysDevice, starTs, endTs, element).then\r\n                    (response =>{ \r\n                        parseValues(response);\r\n                      \r\n                    })\r\n    \r\n        }\r\n}"
+              } ]
+            },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "legendConfig" : {
+              "direction" : "column",
+              "position" : "bottom",
+              "sortDataKeys" : false,
+              "showMin" : false,
+              "showMax" : false,
+              "showAvg" : true,
+              "showTotal" : false,
+              "showLatest" : false
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "ebac0aa3-f1b8-91df-c733-5cb6d69b58e9"
+        },
+        "602ce4f1-682d-a1ac-492d-09585c742abc" : {
+          "isSystemType" : false,
+          "bundleAlias" : "prova2",
+          "typeAlias" : "timeseries_chart2",
+          "type" : "timeseries",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 11.5,
+          "sizeY" : 5.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "68ebcd16-5978-3df1-3d16-c8a5d3f7519f",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "P1",
+                "type" : "timeseries",
+                "label" : "P1",
+                "color" : "#2196f3",
+                "settings" : { },
+                "_hash" : 0.11216945851863325
+              }, {
+                "name" : "P2",
+                "type" : "timeseries",
+                "label" : "P2",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.37492755493256547
+              }, {
+                "name" : "P3",
+                "type" : "timeseries",
+                "label" : "P3",
+                "color" : "#f44336",
+                "settings" : { },
+                "_hash" : 0.8866530726851802
+              } ]
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "interval" : 1800000,
+                "timewindowMs" : 604800000
+              },
+              "aggregation" : {
+                "type" : "AVG",
+                "limit" : 25000
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgb(0, 58, 93)",
+            "padding" : "8px",
+            "settings" : {
+              "shadowSize" : 4,
+              "fontColor" : "#545454",
+              "fontSize" : 10,
+              "xaxis" : {
+                "showLabels" : true,
+                "color" : "#545454"
+              },
+              "yaxis" : {
+                "showLabels" : true,
+                "color" : "#545454",
+                "min" : 0
+              },
+              "grid" : {
+                "color" : "#545454",
+                "tickColor" : "#DDDDDD",
+                "verticalLines" : false,
+                "horizontalLines" : false,
+                "outlineWidth" : 1
+              },
+              "stack" : false,
+              "tooltipIndividual" : false,
+              "timeForComparison" : "months",
+              "xaxisSecond" : {
+                "axisPosition" : "top",
+                "showLabels" : true
+              }
+            },
+            "title" : "Consumi Quadro Capannone 2",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "titleStyle" : {
+              "fontSize" : "18px",
+              "fontWeight" : 400
+            },
+            "showTitleIcon" : false,
+            "titleIcon" : "more_horiz",
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "titleTooltip" : "",
+            "widgetStyle" : { },
+            "useDashboardTimewindow" : true,
+            "displayTimewindow" : true,
+            "showLegend" : true,
+            "actions" : {
+              "headerButton" : [ {
+                "id" : "cdfa9456-cd7c-770c-5c7b-fb64f52fa824",
+                "name" : "Download CSV",
+                "icon" : "file_download",
+                "type" : "customPretty",
+                "customHtml" : "<md-dialog aria-label=\"Scarica csv\">\r\n    <form name=\"addEntityForm\" class=\"add-entity-form\" ng-submit=\"vm.save()\">\r\n        <md-toolbar>\r\n            <div class=\"md-toolbar-tools\">\r\n                <h2>Scarica CSV</h2>\r\n                <span flex></span>\r\n                <md-button class=\"md-icon-button\" ng-click=\"vm.cancel()\">\r\n                    <ng-md-icon icon=\"close\" aria-label=\"Close\"></ng-md-icon>\r\n                </md-button>\r\n            </div>\r\n        </md-toolbar>\r\n        <md-content class=\"md-padding\" layout=\"column\">\r\n            <md-input-container>\r\n              <label>Numero elementi</label>  \r\n              <input  name=\"elementNumber\" type=\"number\" ng-change=\"vm.elementNumber()\" ng-model=\"myValue\"/>\r\n              <div ng-messages=\"rpcForm.rpcMethod.$error\">\r\n              </div>\r\n            </md-input-container>  \r\n        </md-content>\r\n        <md-dialog-actions>\r\n            <md-button  ng-click=\"vm.download()\"  class=\"md-raised md-primary\">Scarica</md-button>\r\n            <md-button ng-click=\"vm.cancel()\" class=\"md-primary\">Annulla</md-button>\r\n        </md-dialog-actions>\r\n    </form>\r\n</md-dialog>",
+                "customCss" : ".add-entity-form md-input-container {\r\n    padding-right: 10px;\r\n}\r\n\r\n.add-entity-form .boolean-value-input {\r\n    padding-left: 5px;\r\n}\r\n\r\n.add-entity-form .boolean-value-input .checkbox-label {\r\n    margin-bottom: 8px;\r\n    color: rgba(0,0,0,0.54);\r\n    font-size: 12px;\r\n}\r\n\r\n.relations-list .header {\r\n    padding-right: 5px;\r\n    padding-bottom: 5px;\r\n    padding-left: 5px;\r\n}\r\n\r\n.relations-list .header .cell {\r\n    padding-right: 5px;\r\n    padding-left: 5px;\r\n    font-size: 12px;\r\n    font-weight: 700;\r\n    color: rgba(0, 0, 0, .54);\r\n    white-space: nowrap;\r\n}\r\n\r\n.relations-list .body {\r\n    padding-right: 5px;\r\n    padding-bottom: 15px;\r\n    padding-left: 5px;\r\n}\r\n\r\n.relations-list .body .row {\r\n    padding-top: 5px;\r\n}\r\n\r\n.relations-list .body .cell {\r\n    padding-right: 5px;\r\n    padding-left: 5px;\r\n}\r\n\r\n.relations-list .body md-autocomplete-wrap md-input-container {\r\n    height: 30px;\r\n}\r\n\r\n.relations-list .body .md-button {\r\n    margin: 0;\r\n}\r\n\r\n",
+                "customFunction" : "var $injector = widgetContext.$scope.$injector;\r\nvar fileOutput=\"\";\r\nvar keys=[];\r\nvar starTs;\r\nvar endTs;\r\nvar dataKeysDevice=\"\";\r\nvar element=100;\r\n\r\nvar $mdDialog = $injector.get('$mdDialog'),\r\n    $document = $injector.get('$document'),\r\n    $q = $injector.get('$q'),\r\n    $rootScope = $injector.get('$rootScope'),\r\n    types = $injector.get('types'),\r\n    assetService = $injector.get('assetService'),\r\n    deviceService = $injector.get('deviceService'),\r\n    attributeService = $injector.get('attributeService'),\r\n    entityRelationService = $injector.get('entityRelationService');\r\n    \r\n\r\nopenAddEntityDialog();\r\n\r\nfunction openAddEntityDialog() {\r\n    $mdDialog.show({\r\n        controller: ['$scope','$mdDialog', AddEntityDialogController],\r\n        controllerAs: 'vm',\r\n        template: htmlTemplate,\r\n        locals: {\r\n            entityId: entityId\r\n        },\r\n        parent: angular.element($document[0].body),\r\n        targetEvent: $event,\r\n        multiple: true,\r\n        clickOutsideToClose: false\r\n    });\r\n\r\n}\r\n\r\nfunction AddEntityDialogController($scope, $mdDialog) {\r\n    var vm = this;\r\n    vm.allowedEntityTypes = [types.entityType.asset, types.entityType.device];\r\n    vm.allowedRelatedEntityTypes = [];\r\n    vm.entitySearchDirection = types.entitySearchDirection;\r\n    vm.dataKeyType=types.dataKeyType.timeseries;\r\n    vm.attributes = {};\r\n    vm.relations = [];\r\n    vm.entries =[];\r\n    vm.deviceEntries ={};\r\n    vm.entityId = entityId;\r\n    vm.entityName = entityName;\r\n    vm.entityType = entityId.entityType;\r\n    vm.serverAttributes = {};\r\n    vm.newRelations = [];\r\n    vm.relationsToDelete = [];\r\n   \r\n    vm.starTs=widgetContext.timeWindow.minTime;\r\n    vm.endTs=widgetContext.timeWindow.maxTime;\r\n    vm.numberRow=element;\r\n    vm.keys=widgetContext.datasources[0];\r\n\tvm.file=fileOutput;\r\n    \r\n\tgetEntityInfo();\r\n\t\r\n    \r\n    vm.save = function() {\r\n        $scope.addEntityForm.$setPristine();\r\n        saveEntityPromise().then(\r\n            function (entity) {\r\n                $mdDialog.hide();\r\n            }\r\n        );\r\n        \r\n        \r\n    };\r\n    function getEntityInfo() {\r\n      \r\n        starTs=widgetContext.timeWindow.minTime;\r\n        endTs=widgetContext.timeWindow.maxTime;\r\n        var numberRow=element;\r\n        keys=widgetContext.datasources[0];\r\n        \r\n        \r\n        for(var i=0; i<keys.dataKeys.length;i++){\r\n            var key=keys.dataKeys[i].name;\r\n            dataKeysDevice+=key+\",\";\r\n            \r\n        }   \r\n        \r\n        dataKeysDevice=dataKeysDevice.substring(0, dataKeysDevice.length - 1);\r\n        \r\n        attributeService.getEntityTimeseriesValues(\r\n               entityId.entityType, entityId.id,dataKeysDevice, starTs, endTs, element).then\r\n                    (response =>{ \r\n                        parseValues(response);\r\n                      \r\n                    })\r\n    \r\n        }\r\n\r\n\r\n  \r\n    function parseValues(timeseries){\r\n        \r\n        var parts = \"device;key; ts; value\\n\";\r\n    \r\n        Object.keys(timeseries).forEach( key => {\r\n        \r\n            timeseries[key].forEach (element => {\r\n                 parts +=entityName+ \";\" +  key + \";\" + element.ts.toString() + \";\" + element.value + \"\\n\"\r\n            \r\n            })\r\n        })\r\n        \r\n        fileOutput=parts;\r\n\t\tvm.file=fileOutput;\r\n      \r\n    }\r\n\r\n    \r\n    vm.cancel = function() {\r\n        $mdDialog.hide();\r\n    };\r\n   \r\n   vm.elementNumber = function() {\r\n        if($scope.myValue && $scope.myValue>0 ){\r\n            vm.numberRow=$scope.myValue;\r\n        }else{\r\n            vm.numberRow=100;\r\n        }\r\n\t\t\r\n\t\tgetEntityInfoValue();\r\n    };\r\n    \r\n   vm.download=function() {\r\n       downloadFile('timeseries.csv', 'data:text/csv;charset=UTF-8,' + encodeURIComponent(fileOutput));\r\n   }\r\n   \r\n    function downloadFile(fileName, urlData) {\r\n        var aLink = document.createElement('a');\r\n        var evt = document.createEvent(\"HTMLEvents\");\r\n        evt.initEvent(\"click\");\r\n        aLink.download = fileName;\r\n        aLink.href = urlData;\r\n        aLink.dispatchEvent(evt);\r\n        aLink.click();\r\n         $mdDialog.hide();\r\n    }  \r\n    \r\n\tfunction getEntityInfoValue() {\r\n      \r\n        var starTs=vm.starTs;\r\n        var endTs=vm.endTs;\r\n        var keys=vm.keys;\r\n\t\tvar element=vm.numberRow;\t\t       \r\n\t    var dataKeysDevice=\"\";\r\n\r\n        for(var i=0; i<keys.dataKeys.length;i++){\r\n            var key=keys.dataKeys[i].name;\r\n            dataKeysDevice+=key+\",\";\r\n            \r\n        }   \r\n        \r\n        dataKeysDevice=dataKeysDevice.substring(0, dataKeysDevice.length - 1);\r\n        \r\n        attributeService.getEntityTimeseriesValues(\r\n               entityId.entityType, entityId.id,dataKeysDevice, starTs, endTs, element).then\r\n                    (response =>{ \r\n                        parseValues(response);\r\n                      \r\n                    })\r\n    \r\n        }\r\n}"
+              } ]
+            },
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : "",
+            "legendConfig" : {
+              "direction" : "column",
+              "position" : "bottom",
+              "sortDataKeys" : false,
+              "showMin" : false,
+              "showMax" : false,
+              "showAvg" : true,
+              "showTotal" : false,
+              "showLatest" : false
+            }
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "602ce4f1-682d-a1ac-492d-09585c742abc"
+        },
+        "b1a056e2-8e18-468f-8600-ca2edd95bd36" : {
+          "isSystemType" : true,
+          "bundleAlias" : "cards",
+          "typeAlias" : "timeseries_table",
+          "type" : "timeseries",
+          "title" : "New widget",
+          "sizeX" : 8,
+          "sizeY" : 6.5,
+          "config" : {
+            "datasources" : [ {
+              "type" : "entity",
+              "name" : null,
+              "entityAliasId" : "ade2718c-a14b-6ff8-9b68-08d11eab1e8d",
+              "filterId" : null,
+              "dataKeys" : [ {
+                "name" : "intensita",
+                "type" : "timeseries",
+                "label" : "intensita",
+                "color" : "#ff9800",
+                "settings" : { },
+                "_hash" : 0.5514609550533681
+              }, {
+                "name" : "MSG",
+                "type" : "timeseries",
+                "label" : "MSG",
+                "color" : "#4caf50",
+                "settings" : { },
+                "_hash" : 0.6813837624542314
+              } ],
+              "latestDataKeys" : null
+            } ],
+            "timewindow" : {
+              "realtime" : {
+                "interval" : 1000,
+                "timewindowMs" : 60000
+              },
+              "aggregation" : {
+                "type" : "NONE",
+                "limit" : 200
+              }
+            },
+            "showTitle" : true,
+            "backgroundColor" : "rgb(255, 255, 255)",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "8px",
+            "settings" : {
+              "showTimestamp" : true,
+              "displayPagination" : true,
+              "defaultPageSize" : 10
+            },
+            "title" : "Dali Devices ",
+            "dropShadow" : true,
+            "enableFullscreen" : true,
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400,
+              "padding" : "5px 10px 5px 10px"
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "widgetStyle" : { },
+            "actions" : { },
+            "showTitleIcon" : false,
+            "iconColor" : "rgba(0, 0, 0, 0.87)",
+            "iconSize" : "24px",
+            "displayTimewindow" : true,
+            "titleTooltip" : "",
+            "widgetCss" : "",
+            "pageSize" : 1024,
+            "noDataDisplayMessage" : ""
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "b1a056e2-8e18-468f-8600-ca2edd95bd36"
+        },
+        "3cde6c44-385b-3f56-c30f-acf2c77813f9" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "APRI/CHIUDI CANCELLO",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "setValue",
+              "methodParams" : "{\"params\": \"AT+OUT1=1-2000,1002,10;\"}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "233dc83b-2894-9f1f-b91f-83ff6feb8d5a" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "3cde6c44-385b-3f56-c30f-acf2c77813f9"
+        },
+        "642ceda7-5d90-a375-de28-0b7e0ddf5f3a" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "STATUS LAMPADA 1",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "setValue",
+              "methodParams" : "{\"params\": \"AT+TDAL=FF-A0,0014,10;\"}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "233dc83b-2894-9f1f-b91f-83ff6feb8d5a" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "642ceda7-5d90-a375-de28-0b7e0ddf5f3a"
+        },
+        "9e854c90-3908-96e4-aae8-f47adb2443cf" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "LAMPADE ON",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "setValue",
+              "methodParams" : "{\"params\": \"AT+ONOF=1,FFFF,10;\"}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "233dc83b-2894-9f1f-b91f-83ff6feb8d5a" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "9e854c90-3908-96e4-aae8-f47adb2443cf"
+        },
+        "08a1ed58-7864-290f-ee8d-8eb5e46aaa4e" : {
+          "isSystemType" : true,
+          "bundleAlias" : "control_widgets",
+          "typeAlias" : "rpcbutton",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 4,
+          "sizeY" : 2,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : false,
+            "backgroundColor" : "#e6e7e8",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "buttonText" : "LAMPADE OFF",
+              "oneWayElseTwoWay" : true,
+              "methodName" : "setValue",
+              "methodParams" : "{\"params\": \"AT+ONOF=0,FFFF,10;\"}",
+              "requestTimeout" : 5000,
+              "showError" : false,
+              "requestPersistent" : false,
+              "styleButton" : {
+                "isRaised" : true,
+                "isPrimary" : false
+              }
+            },
+            "title" : "New RPC Button",
+            "dropShadow" : true,
+            "enableFullscreen" : false,
+            "widgetStyle" : { },
+            "titleStyle" : {
+              "fontSize" : "16px",
+              "fontWeight" : 400
+            },
+            "useDashboardTimewindow" : true,
+            "showLegend" : false,
+            "actions" : { },
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "233dc83b-2894-9f1f-b91f-83ff6feb8d5a" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "08a1ed58-7864-290f-ee8d-8eb5e46aaa4e"
+        },
+        "cb29ed72-5b26-579f-749c-045f06a8b906" : {
+          "isSystemType" : false,
+          "bundleAlias" : "new_form_rpc",
+          "typeAlias" : "my_rpc_test",
+          "type" : "rpc",
+          "title" : "New widget",
+          "image" : null,
+          "description" : null,
+          "sizeX" : 7,
+          "sizeY" : 7,
+          "config" : {
+            "targetDeviceAliases" : [ ],
+            "showTitle" : true,
+            "backgroundColor" : "#fff",
+            "color" : "rgba(0, 0, 0, 0.87)",
+            "padding" : "0px",
+            "settings" : {
+              "requestTimeout" : 500,
+              "oneWayElseTwoWay" : true
+            },
+            "title" : "New My_RPC_Test",
+            "datasources" : [ ],
+            "targetDeviceAliasIds" : [ "233dc83b-2894-9f1f-b91f-83ff6feb8d5a" ]
+          },
+          "row" : 0,
+          "col" : 0,
+          "id" : "cb29ed72-5b26-579f-749c-045f06a8b906"
+        }
+      },
+      "states" : {
+        "default" : {
+          "name" : "Metering Grassani",
+          "root" : true,
+          "layouts" : {
+            "main" : {
+              "widgets" : {
+                "b8caa13a-77c3-86f0-c2df-23db1b7c2669" : {
+                  "sizeX" : 10,
+                  "sizeY" : 9,
+                  "row" : 7,
+                  "col" : 0
+                },
+                "0130b138-9487-2f98-28a4-29cf83b689af" : {
+                  "sizeX" : 10,
+                  "sizeY" : 9,
+                  "row" : 7,
+                  "col" : 20
+                },
+                "f00f1b0c-9c91-3f57-d306-63d10be95b93" : {
+                  "sizeX" : 10,
+                  "sizeY" : 7,
+                  "mobileHide" : false,
+                  "row" : 0,
+                  "col" : 0
+                },
+                "ebac0aa3-f1b8-91df-c733-5cb6d69b58e9" : {
+                  "sizeX" : 10,
+                  "sizeY" : 7,
+                  "row" : 0,
+                  "col" : 10
+                },
+                "602ce4f1-682d-a1ac-492d-09585c742abc" : {
+                  "sizeX" : 10,
+                  "sizeY" : 7,
+                  "row" : 0,
+                  "col" : 20
+                },
+                "b1a056e2-8e18-468f-8600-ca2edd95bd36" : {
+                  "sizeX" : 10,
+                  "sizeY" : 9,
+                  "row" : 7,
+                  "col" : 10
+                },
+                "3cde6c44-385b-3f56-c30f-acf2c77813f9" : {
+                  "sizeX" : 10,
+                  "sizeY" : 3,
+                  "row" : 16,
+                  "col" : 20
+                },
+                "642ceda7-5d90-a375-de28-0b7e0ddf5f3a" : {
+                  "sizeX" : 6,
+                  "sizeY" : 3,
+                  "row" : 16,
+                  "col" : 2
+                },
+                "9e854c90-3908-96e4-aae8-f47adb2443cf" : {
+                  "sizeX" : 5,
+                  "sizeY" : 3,
+                  "row" : 16,
+                  "col" : 10
+                },
+                "08a1ed58-7864-290f-ee8d-8eb5e46aaa4e" : {
+                  "sizeX" : 5,
+                  "sizeY" : 3,
+                  "row" : 16,
+                  "col" : 15
+                },
+                "cb29ed72-5b26-579f-749c-045f06a8b906" : {
+                  "sizeX" : 7,
+                  "sizeY" : 7,
+                  "row" : 19,
+                  "col" : 0
+                }
+              },
+              "gridSettings" : {
+                "backgroundColor" : "#eeeeee",
+                "color" : "rgba(0,0,0,0.870588)",
+                "columns" : 24,
+                "margin" : 10,
+                "backgroundSizeMode" : "100%"
+              }
+            }
+          }
+        }
+      },
+      "entityAliases" : {
+        "ade2718c-a14b-6ff8-9b68-08d11eab1e8d" : {
+          "id" : "ade2718c-a14b-6ff8-9b68-08d11eab1e8d",
+          "alias" : "Dali Devices",
+          "filter" : {
+            "type" : "deviceType",
+            "resolveMultiple" : true,
+            "deviceType" : "Dali",
+            "deviceNameFilter" : ""
+          }
+        },
+        "fa01c779-eb2e-c9e1-b6f4-33699356cb04" : {
+          "id" : "fa01c779-eb2e-c9e1-b6f4-33699356cb04",
+          "alias" : "Quadro Generale",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "56926e10-6fee-11ed-a76d-9955dd563d2d"
+            }
+          }
+        },
+        "71f6b346-3608-d7c4-2423-52576aff3190" : {
+          "id" : "71f6b346-3608-d7c4-2423-52576aff3190",
+          "alias" : "Quadro Pompa",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "88e98ba0-6fee-11ed-a76d-9955dd563d2d"
+            }
+          }
+        },
+        "68ebcd16-5978-3df1-3d16-c8a5d3f7519f" : {
+          "id" : "68ebcd16-5978-3df1-3d16-c8a5d3f7519f",
+          "alias" : "Quadro Capannone2",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "b47528b0-6fee-11ed-a76d-9955dd563d2d"
+            }
+          }
+        },
+        "4e134f71-3c9f-70ec-3336-12a42b66c3b1" : {
+          "id" : "4e134f71-3c9f-70ec-3336-12a42b66c3b1",
+          "alias" : "NODO INVERTER",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "abd39230-6ffa-11ed-a76d-9955dd563d2d"
+            }
+          }
+        },
+        "eb582a5b-e7bd-66cc-bd35-68adc3b541f9" : {
+          "id" : "eb582a5b-e7bd-66cc-bd35-68adc3b541f9",
+          "alias" : "Apri Cancello",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "43afa280-9821-11ed-a76d-9955dd563d2d"
+            }
+          }
+        },
+        "233dc83b-2894-9f1f-b91f-83ff6feb8d5a" : {
+          "id" : "233dc83b-2894-9f1f-b91f-83ff6feb8d5a",
+          "alias" : "gw",
+          "filter" : {
+            "type" : "singleEntity",
+            "resolveMultiple" : false,
+            "singleEntity" : {
+              "entityType" : "DEVICE",
+              "id" : "6a28a640-6feb-11ed-a76d-9955dd563d2d"
+            }
+          }
+        }
+      },
+      "filters" : { },
+      "timewindow" : {
+        "hideInterval" : false,
+        "hideAggregation" : false,
+        "hideAggInterval" : false,
+        "selectedTab" : 0,
+        "realtime" : {
+          "timewindowMs" : 86400000,
+          "interval" : 300000
+        },
+        "aggregation" : {
+          "type" : "NONE",
+          "limit" : 25000
+        }
+      },
+      "settings" : {
+        "stateControllerId" : "entity",
+        "showTitle" : false,
+        "showDashboardsSelect" : true,
+        "showEntitiesSelect" : true,
+        "showDashboardTimewindow" : true,
+        "showDashboardExport" : true,
+        "toolbarAlwaysOpen" : true
+      }
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "DASHBOARD",
+      "id" : "8922b220-6ff0-11ed-a76d-9955dd563d2d"
+    },
+    "image" : null,
+    "mobileHide" : false,
+    "mobileOrder" : null,
+    "name" : "Metering Grassani",
+    "title" : "Metering Grassani"
+  },
+  "relations" : [ ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}

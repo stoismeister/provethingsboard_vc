@@ -1,0 +1,60 @@
+{
+  "entityType" : "ASSET",
+  "entity" : {
+    "additionalInfo" : {
+      "description" : ""
+    },
+    "customerId" : {
+      "entityType" : "CUSTOMER",
+      "id" : "13814000-1dd2-11b2-8080-808080808080"
+    },
+    "externalId" : null,
+    "id" : {
+      "entityType" : "ASSET",
+      "id" : "c486c4d0-3ce4-11ed-82c5-dfdc1fc904c8"
+    },
+    "label" : null,
+    "name" : "FARM",
+    "type" : "nuovo"
+  },
+  "relations" : [ {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "c486c4d0-3ce4-11ed-82c5-dfdc1fc904c8"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "a4953090-310d-11ed-84c7-a996325bb5fa"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "c486c4d0-3ce4-11ed-82c5-dfdc1fc904c8"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "14039210-3126-11ed-989b-f327fd3e6ae1"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  }, {
+    "additionalInfo" : null,
+    "from" : {
+      "entityType" : "ASSET",
+      "id" : "c486c4d0-3ce4-11ed-82c5-dfdc1fc904c8"
+    },
+    "to" : {
+      "entityType" : "DEVICE",
+      "id" : "31553170-3cd9-11ed-82c5-dfdc1fc904c8"
+    },
+    "type" : "Contains",
+    "typeGroup" : "COMMON"
+  } ],
+  "attributes" : {
+    "SERVER_SCOPE" : [ ]
+  }
+}
