@@ -6,7 +6,10 @@
     },
     "configuration" : null,
     "debugMode" : false,
-    "externalId" : null,
+    "externalId" : {
+      "entityType" : "RULE_CHAIN",
+      "id" : "852ed8c0-bdba-11ed-a76d-9955dd563d2d"
+    },
     "firstRuleNodeId" : null,
     "id" : {
       "entityType" : "RULE_CHAIN",
@@ -33,9 +36,28 @@
       "externalId" : null,
       "id" : {
         "entityType" : "RULE_NODE",
-        "id" : "3fd084c0-d383-11ed-a76d-9955dd563d2d"
+        "id" : "979d7a50-d383-11ed-a76d-9955dd563d2d"
       },
       "name" : "prova",
+      "ruleChainId" : null,
+      "type" : "org.thingsboard.rule.engine.filter.TbJsSwitchNode"
+    }, {
+      "additionalInfo" : {
+        "description" : "",
+        "layoutX" : 513,
+        "layoutY" : 322
+      },
+      "configuration" : {
+        "jsScript" : "function nextRelation(metadata, msg) {\n    return ['one','nine'];\n}\nif(msgType === 'POST_TELEMETRY_REQUEST') {\n    return ['two'];\n}\nreturn nextRelation(metadata, msg);"
+      },
+      "createdTime" : 0,
+      "debugMode" : false,
+      "externalId" : null,
+      "id" : {
+        "entityType" : "RULE_NODE",
+        "id" : "a7b6e070-d383-11ed-a76d-9955dd563d2d"
+      },
+      "name" : "p2",
       "ruleChainId" : null,
       "type" : "org.thingsboard.rule.engine.filter.TbJsSwitchNode"
     } ],
